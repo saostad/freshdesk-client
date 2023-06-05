@@ -5,7 +5,6 @@ import { getTickets } from "./services/getTickets";
 import { getRequesters } from "./services/getRequesters";
 import { getDepartments } from "./services/getDepartments";
 
-import sql from "mssql";
 import { getAgents } from "./services/getAgents";
 import { getAssets } from "./services/getAssets";
 import { getAssetTypes } from "./services/getAssetTypes";
@@ -32,21 +31,7 @@ if (process.env.NODE_ENV) {
   await createLoggerInstance(nodeMode);
 
   const tokenKey = await getCredential("freshdesk_tokenKey");
-  const baseUri = "https://kajimausa.freshservice.com";
-
-  const azurePool = new sql.ConnectionPool({
-    server: "kusa-sql01.database.windows.net",
-    database: "azure-db",
-    user: (await getCredential("kii_freshdesk_powerbi")).account,
-    password: (await getCredential("kii_freshdesk_powerbi")).password,
-    connectionTimeout: 30000,
-    options: {
-      encrypt: true,
-      enableArithAbort: true,
-    },
-  });
-
-  await azurePool.connect();
+  const baseUri = "https://YOUR_DOMAIN.freshservice.com";
 
   const tickets = await getTickets({ baseUri, token: tokenKey.password });
 
@@ -75,8 +60,6 @@ if (process.env.NODE_ENV) {
     baseUri,
     token: tokenKey.password,
   });
-
-  await azurePool.close();
 })().catch((err) => {
   writeLog([err], { stdout: true, level: "error" });
 });
