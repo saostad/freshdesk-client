@@ -1,0 +1,23 @@
+{
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.words": [
+    "auditlog",
+    "boxednode",
+    "Builtins",
+    "Freshdesk",
+    "Freshservice",
+    "hrend",
+    "hrstart",
+    "JCJM",
+    "jsonexport",
+    "keytar",
+    "KISQL",
+    "precompile",
+    "prestart",
+    "snyk",
+    "tsbuildinfo"
+  ],
+  "editor.minimap.enabled": false,
+  "workbench.sideBar.location": "right",
+  "editor.bracketPairColorization.enabled": true
+}

@@ -1,0 +1,10 @@
+{
+  "name": "freshdesk-api-to-azure-db",
+  "version": "1.0.0",
+  "description": "freshdesk-api-to-azure-db",
+  "type": "module",
+  "main": "dist-cjs/index.js",
+  "bin": "../../dist-cjs/index.js",
+  "author": "Saeid Ostad",
+  "license": "MIT"
+}
