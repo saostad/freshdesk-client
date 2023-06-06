@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.0.1](https://github.com/saostad/freshdesk-api/compare/v1.0.0...v1.0.1)
+
+> 6 June 2023
+
+- doc: readme updated [`25fa8d5`](https://github.com/saostad/freshdesk-api/commit/25fa8d5fb2e8c54c5ab289b547d7cf1cbbfdc089)
+- doc: change-log updated. [`a89bd05`](https://github.com/saostad/freshdesk-api/commit/a89bd05511a8389f8ee004a656bd10e28ac2c8cb)
+
 #### v1.0.0
 
 > 6 June 2023
