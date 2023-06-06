@@ -1,5 +1,19 @@
 # Freshdesk API v2
 
+## Description
+
+This is a simple wrapper for the Freshdesk API v2.
+
+## Installation
+
+```bash
+$ npm install freshdesk-client
+```
+
+## Documentation
+
+[Full documentation here.](https://saostad.github.io/freshdesk-client/index.html)
+
 ## How to use
 
 ```ts
