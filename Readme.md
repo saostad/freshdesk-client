@@ -3,15 +3,15 @@
 ## How to use
 
 ```ts
-import { getTickets } from "./services/getTickets";
-import { getRequesters } from "./services/getRequesters";
-import { getDepartments } from "./services/getDepartments";
+import { getTickets } from "freshdesk-client";
+import { getRequesters } from "freshdesk-client";
+import { getDepartments } from "freshdesk-client";
 
-import { getAgents } from "./services/getAgents";
-import { getAssets } from "./services/getAssets";
-import { getAssetTypes } from "./services/getAssetTypes";
-import { getProducts } from "./services/getProducts";
-import { getLocations } from "./services/getLocations";
+import { getAgents } from "freshdesk-client";
+import { getAssets } from "freshdesk-client";
+import { getAssetTypes } from "freshdesk-client";
+import { getProducts } from "freshdesk-client";
+import { getLocations } from "freshdesk-client";
 
 const tokenKey = "FRESHDESK_TOKEN_KEY";
 const baseUri = "https://YOUR_DOMAIN.freshservice.com";
