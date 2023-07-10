@@ -1,8 +1,8 @@
 {
   "name": "freshdesk-client",
-  "version": "1.2.1-beta01",
+  "version": "1.2.0",
   "description": "node.js freshdesk api sdk client",
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/saostad/freshdesk-client.git"
@@ -41,8 +41,7 @@
     "tsc": "tsc",
     "tsc-cjs": "tsc --p tsconfig-cjs.json",
     "tsc:watch": "tsc --watch --preserveWatchOutput",
-    "add-cjs-packagejson": "shx cp ./config/publish/package.json ./dist-cjs/package.json",
-    "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs add-cjs-packagejson gen-docs",
+    "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs gen-docs",
     "postpublish": "npm-run-all -s tag gen-changelog",
     "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-esm/index.js",
     "index": "node --enable-source-maps --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-esm/index.js",
@@ -88,7 +87,6 @@
     "pkg": "^5.8.1",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
-    "shx": "^0.3.4",
     "ts-jest": "^29.1.1",
     "typedoc": "^0.24.8",
     "typescript": "^5.1.6",
