@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.2](https://github.com/saostad/freshdesk-client/compare/v1.2.1-beta02...v1.2.2)
+
+> 10 July 2023
+
+- fix: breaks when filters not provided [`08630f4`](https://github.com/saostad/freshdesk-client/commit/08630f47440b53fe9a4f0b8abbe028f961900ecd)
+- doc: change-log updated. [`1323a5b`](https://github.com/saostad/freshdesk-client/commit/1323a5bbe1fb6742cebc250cc6569818db67d747)
+
 #### [v1.2.1-beta02](https://github.com/saostad/freshdesk-client/compare/v1.2.1-beta01...v1.2.1-beta02)
 
 > 10 July 2023
