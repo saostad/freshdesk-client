@@ -8,11 +8,20 @@ type GetData = {
   /** @info You can request for additional resources using the "include" keyword. For example you can embed the requester's details within the ticket view API by using the following command.
    * @ref for acceptable values refer to [freshservice api documentations](https://api.freshservice.com/#embedding). */
   include?: string;
+  /** @info You can filter the tickets using the "filter" keyword.
+   * @note url for filter is different from other api calls.
+   * @ref for acceptable values refer to [freshservice api documentations](https://api.freshservice.com/v2/#filter_tickets).
+   * @endpoint GET  /api/v2/tickets/filter?query=[query]
+   * @example "priority:>3%20AND%20group_id:11%20AND%20status:2"
+   * @explain Get the list of Urgent and High priority tickets in Open Status belong to the group_id 11 ('priority:3 AND group_id:11 AND status:2')
+   */
+  filter?: string;
 };
 export async function getData<T>({
   token,
   uri,
   include,
+  filter,
 }: GetData): Promise<Array<Record<string, T[]>>> {
   try {
     writeLog([`getData`, uri], { level: "trace" });
@@ -21,6 +30,7 @@ export async function getData<T>({
 
     const params: AxiosRequestConfig<any>["params"] = {
       per_page: 100,
+      query: `"${filter}"`,
     };
 
     if (include) {

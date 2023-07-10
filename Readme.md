@@ -4,7 +4,7 @@
 
 This is a simple wrapper for the Freshdesk API v2.
 
-- [Freshdesk API v2](https://developers.freshdesk.com/api/)
+- [Freshdesk API v2](https://api.freshservice.com/v2)
 - type safe with TypeScript and Zod
 - take care of pagination for you
 
@@ -40,6 +40,12 @@ const tokenKey = "FRESHDESK_TOKEN_KEY";
 const baseUri = "https://YOUR_DOMAIN.freshservice.com";
 
 const tickets = await getTickets({ baseUri, token: tokenKey });
+
+const ticketsWithFilter = await getTickets({
+  baseUri,
+  token,
+  filter: "status:3 OR status:2",
+});
 
 const requesters = await getRequesters({ baseUri, token: tokenKey });
 
