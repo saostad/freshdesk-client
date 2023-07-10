@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.7](https://github.com/saostad/freshdesk-client/compare/v1.2.6...v1.2.7)
+
+> 10 July 2023
+
+- pkg: updated [`75d20f5`](https://github.com/saostad/freshdesk-client/commit/75d20f5f695fbe2b9db5cb939b272d9d5410f7ef)
+- doc: change-log updated. [`87098c6`](https://github.com/saostad/freshdesk-client/commit/87098c66481c782bea938458b0fe91c215392ca8)
+
 #### [v1.2.6](https://github.com/saostad/freshdesk-client/compare/v1.2.5-beta02...v1.2.6)
 
 > 10 July 2023
