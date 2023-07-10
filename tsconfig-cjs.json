@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    "module": "node16",
+    "lib": ["ES2022"],
+    "moduleResolution": "node16",
     "outDir": "./dist-cjs" /* Redirect output structure to the directory. */ /* Enable project compilation */,
     "tsBuildInfoFile": "./dist-cjs/tsconfig.tsbuildinfo"
   }

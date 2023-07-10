@@ -1,7 +1,6 @@
-import { promisify } from "util";
-import { exec } from "child_process";
-import { loadJsonFile } from "load-json-file";
-import { join } from "path";
+const { promisify } = require("util");
+const { exec } = require("child_process");
+const { join } = require("path");
 
 const execPromise = promisify(exec);
 
@@ -15,7 +14,7 @@ async function runShellCmd(command) {
   }
 }
 
-const { version } = await loadJsonFile(join(process.cwd(), "package.json"));
+const { version } = require(join(process.cwd(), "package.json"));
 
 async function tag() {
   await runShellCmd(`git config --global core.editor "code --wait"`);

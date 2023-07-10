@@ -1,18 +1,13 @@
 {
   "name": "freshdesk-client",
-  "version": "1.2.2",
+  "version": "1.2.5-beta01",
   "description": "node.js freshdesk api sdk client",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/saostad/freshdesk-client.git"
   },
-  "main": "dist-esm/index.js",
-  "types": "dist-esm/index.d.ts",
-  "exports": {
-    "import": "./dist-esm/index.js",
-    "require": "./dist-cjs/index.js"
-  },
+  "main": "dist-cjs/index.js",
+  "types": "dist-cjs/index.d.ts",
   "engines": {
     "node": ">=18"
   },
@@ -34,7 +29,7 @@
     "tag": "node ./config/tag.js",
     "auto-changelog": "auto-changelog --hide-credit --breaking-pattern \"breaking:\"",
     "gen-changelog": "npm run auto-changelog && git add CHANGELOG.md && git commit -m \"doc: change-log updated.\"",
-    "clean": "rimraf ./dist-esm ./dist-cjs ./release",
+    "clean": "rimraf ./dist-cjs ./dist-cjs ./release",
     "precompile": "npm-run-all -s clean tsc-cjs",
     "compile": "node --trace-warnings ./config/compile/compile.js",
     "compile-new": "npx pkg ./config/compile --out-path build",
@@ -44,21 +39,20 @@
     "add-cjs-packagejson": "shx cp ./config/publish/package.json ./dist-cjs/package.json",
     "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs add-cjs-packagejson gen-docs",
     "postpublish": "npm-run-all -s tag gen-changelog",
-    "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-esm/index.js",
-    "index": "node --enable-source-maps --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-esm/index.js",
-    "dev:monitor": "set NODE_ENV=development&& nodemon --delay 2.5 --watch dist-esm --exec \"npm run index\"",
-    "dev": "wait-on dist-esm/index.js && npm run dev:monitor",
+    "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
+    "index": "node --enable-source-maps --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
+    "dev:monitor": "set NODE_ENV=development&& nodemon --delay 2.5 --watch dist-cjs --exec \"npm run index\"",
+    "dev": "wait-on dist-cjs/index.js && npm run dev:monitor",
     "prestart": "npm run clean",
     "start": "npm-run-all -p -c tsc:watch dev",
-    "prod": "set NODE_ENV=production&& node  --es-module-specifier-resolution=node --trace-warnings --unhandled-rejections=strict dist-esm/index.js"
+    "prod": "set NODE_ENV=production&& node  --es-module-specifier-resolution=node --trace-warnings --unhandled-rejections=strict dist-cjs/index.js"
   },
   "author": "Saeid Ostad",
   "license": "MIT",
   "jest": {
-    "preset": "ts-jest/presets/default-esm",
     "globals": {
       "ts-jest": {
-        "useESM": true
+        "useESM": false
       }
     },
     "roots": [
