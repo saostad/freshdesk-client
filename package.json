@@ -1,6 +1,6 @@
 {
   "name": "freshdesk-client",
-  "version": "1.2.5-beta02",
+  "version": "1.2.6",
   "description": "node.js freshdesk api sdk client",
   "repository": {
     "type": "git",
