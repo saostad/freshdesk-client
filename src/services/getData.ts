@@ -30,7 +30,7 @@ export async function getData<T>({
 
     const params: AxiosRequestConfig<any>["params"] = {
       per_page: 100,
-      query: `"${filter}"`,
+      query: filter ? `"${filter}"` : undefined,
     };
 
     if (include) {
