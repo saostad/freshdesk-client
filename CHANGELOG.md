@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.1.0](https://github.com/saostad/freshdesk-client/compare/v1.0.2...v1.1.0)
+
+> 10 July 2023
+
+- feat: create ticket function [`cb7216d`](https://github.com/saostad/freshdesk-client/commit/cb7216da32103cceac694e974e3422bf089aa05a)
+- doc: change-log updated. [`cc86ee4`](https://github.com/saostad/freshdesk-client/commit/cc86ee4a7416ed36b4e330a48cdab86bf67145bf)
+
 #### v1.0.2
 
 > 6 June 2023
