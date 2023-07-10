@@ -49,15 +49,19 @@ export function env(name: string): string {
 }
 
 type ValidateOrFail = { data: any; schema: any };
+
+/**@description validate data against zod schema
+ * @throws {Error} if validation failed
+ */
 export function validateOrFail({ data, schema }: ValidateOrFail) {
   writeLog([`validateOrFail`], { level: "trace" });
 
   const result = schema.safeParse(data);
   if (!result.success) {
     // handle error then return
-    console.error(`result.error;`, result.error.issues);
+    throw new Error(JSON.stringify(result.error.issues, null, 2));
   } else {
-    return data;
+    return result.data;
   }
 }
 

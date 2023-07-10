@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { writeLog } from "fast-node-logger";
 import { isMoreDataAvailable, getNexLink } from "../helpers/util";
 

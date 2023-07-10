@@ -4,6 +4,10 @@
 
 This is a simple wrapper for the Freshdesk API v2.
 
+- [Freshdesk API v2](https://developers.freshdesk.com/api/)
+- type safe with TypeScript and Zod
+- take care of pagination for you
+
 ## Installation
 
 ```bash
@@ -20,12 +24,17 @@ $ npm install freshdesk-client
 import { getTickets } from "freshdesk-client";
 import { getRequesters } from "freshdesk-client";
 import { getDepartments } from "freshdesk-client";
-
 import { getAgents } from "freshdesk-client";
 import { getAssets } from "freshdesk-client";
 import { getAssetTypes } from "freshdesk-client";
 import { getProducts } from "freshdesk-client";
 import { getLocations } from "freshdesk-client";
+import {
+  TicketPriority,
+  TicketSourceType,
+  TicketStatus,
+  createTicket,
+} from "freshdesk-client";
 
 const tokenKey = "FRESHDESK_TOKEN_KEY";
 const baseUri = "https://YOUR_DOMAIN.freshservice.com";
@@ -56,5 +65,20 @@ const products = await getProducts({
 const locations = await getLocations({
   baseUri,
   token: tokenKey,
+});
+
+const ticket = await createTicket({
+  baseUri,
+  token,
+  ticket: {
+    description: "Test ticket description",
+    subject: "Test ticket subject",
+    type: "Incident",
+    priority: TicketPriority.Urgent,
+    status: TicketStatus.Open,
+    source: TicketSourceType.Email,
+    email: "requester domain email",
+    group_id: 60000000000, // group id to assign ticket to
+  },
 });
 ```

@@ -7,3 +7,4 @@ export { getAssets } from "./services/getAssets";
 export { getAssetTypes } from "./services/getAssetTypes";
 export { getProducts } from "./services/getProducts";
 export { getLocations } from "./services/getLocations";
+export { createTicket } from "./services/createTicket";
