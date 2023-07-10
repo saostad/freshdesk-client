@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.6](https://github.com/saostad/freshdesk-client/compare/v1.2.5-beta02...v1.2.6)
+
+> 10 July 2023
+
+- removed: esm exports [`d055ab8`](https://github.com/saostad/freshdesk-client/commit/d055ab88e3e6aab9f0c4b711c2bdc98bfba5b180)
+- doc: change-log updated. [`cc71a51`](https://github.com/saostad/freshdesk-client/commit/cc71a51883a0607a6275ef0faa4889de4a13c82e)
+
 #### [v1.2.5-beta02](https://github.com/saostad/freshdesk-client/compare/v1.2.5-beta01...v1.2.5-beta02)
 
 > 10 July 2023
