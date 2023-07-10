@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.5-beta01](https://github.com/saostad/freshdesk-client/compare/v1.2.2...v1.2.5-beta01)
+
+> 10 July 2023
+
+- fix: published npm package [`1c708b1`](https://github.com/saostad/freshdesk-client/commit/1c708b15f2e43d72759943e77916d135266e6307)
+- doc: change-log updated. [`331a558`](https://github.com/saostad/freshdesk-client/commit/331a5586f1c0e0598a075ce7052e48fa642d46c8)
+
 #### [v1.2.2](https://github.com/saostad/freshdesk-client/compare/v1.2.1-beta02...v1.2.2)
 
 > 10 July 2023
