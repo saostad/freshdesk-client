@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.0](https://github.com/saostad/freshdesk-client/compare/v1.1.0...v1.2.0)
+
+> 10 July 2023
+
+- feat: added filter to getTickets [`f1a3a01`](https://github.com/saostad/freshdesk-client/commit/f1a3a0147de1950e976993ed29fbacb1a679dc5f)
+- doc: change-log updated. [`0ea283a`](https://github.com/saostad/freshdesk-client/commit/0ea283a334418eea90d4f9e2b11da2d37b70fc9f)
+
 #### [v1.1.0](https://github.com/saostad/freshdesk-client/compare/v1.0.2...v1.1.0)
 
 > 10 July 2023
