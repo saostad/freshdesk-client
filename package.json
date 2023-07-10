@@ -1,6 +1,6 @@
 {
   "name": "freshdesk-client",
-  "version": "1.2.5-beta01",
+  "version": "1.2.5-beta02",
   "description": "node.js freshdesk api sdk client",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "tsc-cjs": "tsc --p tsconfig-cjs.json",
     "tsc:watch": "tsc --watch --preserveWatchOutput",
     "add-cjs-packagejson": "shx cp ./config/publish/package.json ./dist-cjs/package.json",
-    "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs add-cjs-packagejson gen-docs",
+    "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs gen-docs",
     "postpublish": "npm-run-all -s tag gen-changelog",
     "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
     "index": "node --enable-source-maps --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
