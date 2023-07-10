@@ -1,6 +1,6 @@
 {
   "name": "freshdesk-client",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "node.js freshdesk api sdk client",
   "repository": {
     "type": "git",
@@ -36,7 +36,6 @@
     "tsc": "tsc",
     "tsc-cjs": "tsc --p tsconfig-cjs.json",
     "tsc:watch": "tsc --watch --preserveWatchOutput",
-    "add-cjs-packagejson": "shx cp ./config/publish/package.json ./dist-cjs/package.json",
     "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs gen-docs",
     "postpublish": "npm-run-all -s tag gen-changelog",
     "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
@@ -64,11 +63,11 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^29.5.2",
+    "@types/jest": "^29.5.3",
     "@types/jsonexport": "^3.0.2",
     "@types/node": "^18.16.19",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "auto-changelog": "^2.4.0",
     "colors": "^1.4.0",
     "eslint": "^8.44.0",
@@ -81,7 +80,6 @@
     "pkg": "^5.8.1",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
-    "shx": "^0.3.4",
     "ts-jest": "^29.1.1",
     "typedoc": "^0.24.8",
     "typescript": "^5.1.6",
