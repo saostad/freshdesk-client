@@ -38,13 +38,13 @@
     "tsc:watch": "tsc --watch --preserveWatchOutput",
     "prepublishOnly": "npm-run-all -s test clean tsc tsc-cjs gen-docs",
     "postpublish": "npm-run-all -s tag gen-changelog",
-    "index:inspect": "node --inspect --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
-    "index": "node --enable-source-maps --trace-warnings --es-module-specifier-resolution=node --unhandled-rejections=strict dist-cjs/index.js",
+    "index:inspect": "node --inspect --trace-warnings --unhandled-rejections=strict dist-cjs/index.js",
+    "index": "node --enable-source-maps --trace-warnings --unhandled-rejections=strict dist-cjs/index.js",
     "dev:monitor": "set NODE_ENV=development&& nodemon --delay 2.5 --watch dist-cjs --exec \"npm run index\"",
     "dev": "wait-on dist-cjs/index.js && npm run dev:monitor",
     "prestart": "npm run clean",
     "start": "npm-run-all -p -c tsc:watch dev",
-    "prod": "set NODE_ENV=production&& node  --es-module-specifier-resolution=node --trace-warnings --unhandled-rejections=strict dist-cjs/index.js"
+    "prod": "set NODE_ENV=production&& node  --trace-warnings --unhandled-rejections=strict dist-cjs/index.js"
   },
   "author": "Saeid Ostad",
   "license": "MIT",
