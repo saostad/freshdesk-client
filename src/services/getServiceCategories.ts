@@ -38,8 +38,10 @@ export const getServiceCategories = async ({
     token,
   });
 
-  const serviceCategories: z.infer<typeof ServiceCategory>[] =
-    response[0].service_categories;
+  const serviceCategories: z.infer<typeof ServiceCategory>[] = [];
+  response.forEach((el) => {
+    serviceCategories.push(...el["service_categories"]);
+  });
 
   if (doValidate) {
     validateOrFail({ schema, data: serviceCategories });
