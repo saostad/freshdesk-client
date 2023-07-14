@@ -4,8 +4,8 @@ import { validateOrFail } from "../helpers/util";
 import { Asset, Assets } from "../typings/asset";
 import { getData } from "./getData";
 
-type GetAsset = { baseUri: string; token: string };
-export async function getAssets({ baseUri, token }: GetAsset) {
+type GetAssets = { baseUri: string; token: string };
+export async function getAssets({ baseUri, token }: GetAssets) {
   writeLog(`getAsset()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/assets`;

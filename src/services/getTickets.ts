@@ -24,7 +24,11 @@ export async function getTickets({ baseUri, token, filter }: GetTickets) {
     uri = `${baseUri}/api/v2/tickets/filter`;
   }
 
-  const data = await getData<z.infer<typeof Ticket>>({ uri, token, filter });
+  const data = await getData<z.infer<typeof Ticket>>({
+    uri,
+    token,
+    getTicketsConfigs: { filter },
+  });
 
   const tickets: z.infer<typeof Ticket>[] = [];
 
