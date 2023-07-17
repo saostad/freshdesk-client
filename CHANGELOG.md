@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.0](https://github.com/saostad/freshdesk-client/compare/v1.2.7...v1.3.0)
+
+> 17 July 2023
+
+- feat: getServiceCategories and getServiceItems added [`ff0e62b`](https://github.com/saostad/freshdesk-client/commit/ff0e62b2de0f3d43bcc7bc3698941e77035077ca)
+- feat: getServiceCategories [`6bbf8bf`](https://github.com/saostad/freshdesk-client/commit/6bbf8bf419c1a6f83a5c9d8118a51659426f651b)
+- enhance: internal api to get data [`3eb68b2`](https://github.com/saostad/freshdesk-client/commit/3eb68b28d840774318c0cf4a0b6bcbfd1e53298c)
+
 #### [v1.2.7](https://github.com/saostad/freshdesk-client/compare/v1.2.6...v1.2.7)
 
 > 10 July 2023
