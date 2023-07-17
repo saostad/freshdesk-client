@@ -20,6 +20,7 @@ export async function getData<T>({
   token,
   uri,
   include,
+  params,
   getTicketsConfigs,
 }: GetData): Promise<Array<Record<string, T[]>>> {
   try {
@@ -27,16 +28,21 @@ export async function getData<T>({
 
     writeLog(`getting data from ${uri}`, { stdout: true, level: "info" });
 
-    const params: AxiosRequestConfig<any>["params"] = {
+    const requestParams: AxiosRequestConfig<any>["params"] = {
       per_page: 100,
     };
 
     if (include) {
-      params.include = include;
+      requestParams.include = include;
+    }
+
+    if (params) {
+      // add params object to requestParams object without overriding existing params
+      Object.assign(requestParams, params);
     }
 
     if (getTicketsConfigs?.filter) {
-      params.query = `"${getTicketsConfigs.filter}"`;
+      requestParams.query = `"${getTicketsConfigs.filter}"`;
     }
 
     const config: AxiosRequestConfig = {
@@ -47,7 +53,7 @@ export async function getData<T>({
         "Content-Type": "application/json",
       },
       auth: { username: token, password: "x" },
-      params,
+      params: requestParams,
     };
 
     const data = [];
