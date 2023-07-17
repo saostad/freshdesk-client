@@ -4,11 +4,7 @@ import { z } from "zod";
 import { postData } from "./postData";
 import { BaseCreateInput } from "../typings/general";
 
-// https://api.freshservice.com/v2/#create_ticket
-/** Ticket Properties
- * Ticket Properties
-Every ticket uses certain fixed numerical values to denote its Status and Priorities. These numerical values along with their meanings are given below.
-
+/** 
 Source Type	Value
 Email	1
 Portal	2
@@ -20,19 +16,7 @@ AWS Cloudwatch	7
 Pagerduty	8
 Walkup	9
 Slack	10
-
-Status	Value
-Open	2
-Pending	3
-Resolved	4
-Closed	5
-
-Priorities	Value
-Low	1
-Medium	2
-High	3
-Urgent	4
- */
+*/
 export enum TicketSourceType {
   Email = 1,
   Portal = 2,
@@ -46,6 +30,13 @@ export enum TicketSourceType {
   Slack = 10,
 }
 
+/**
+ * Status	Value
+Open	2
+Pending	3
+Resolved	4
+Closed	5
+ */
 export enum TicketStatus {
   Open = 2,
   Pending = 3,
@@ -53,6 +44,13 @@ export enum TicketStatus {
   Closed = 5,
 }
 
+/**
+ * Priorities	Value
+Low	1
+Medium	2
+High	3
+Urgent	4
+ */
 export enum TicketPriority {
   Low = 1,
   Medium = 2,
