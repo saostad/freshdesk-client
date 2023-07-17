@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.4.0](https://github.com/saostad/freshdesk-client/compare/v1.3.0...v1.4.0)
+
+> 17 July 2023
+
+- feat: create service catalog item [`14fc2e7`](https://github.com/saostad/freshdesk-client/commit/14fc2e7b0e639d5f16680ce2f392dc25eb8e0c41)
+- enhance: added more generic typings to post data func [`65d5dd1`](https://github.com/saostad/freshdesk-client/commit/65d5dd150bb3f6290d9a85218183176dd4799d21)
+- fix: bug in using params property [`bbbeb2b`](https://github.com/saostad/freshdesk-client/commit/bbbeb2bfe98a78acd3cdd5e1027f450eb6b0a438)
+
 #### [v1.3.0](https://github.com/saostad/freshdesk-client/compare/v1.2.7...v1.3.0)
 
 > 17 July 2023
