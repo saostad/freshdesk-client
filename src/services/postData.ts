@@ -1,14 +1,14 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { InternalBasePostInput } from "../typings/general";
 
-export async function postData<T>({
-  uri,
-  token,
-  data,
-}: {
-  uri: string;
-  token: string;
-  data: any;
-}): Promise<T> {
+/**
+ * @description post data to freshservice api
+ *
+ */
+export async function postData<
+  InputData extends Record<string, any> = any,
+  ReturnData extends Record<string, any> = any,
+>({ uri, token, data }: InternalBasePostInput<InputData>): Promise<ReturnData> {
   const config: AxiosRequestConfig = {
     method: "post",
     url: uri,

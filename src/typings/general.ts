@@ -25,3 +25,14 @@ export type BaseGetInput = {
   /** set to true to validate api response against the zod schema */
   doValidate?: boolean;
 };
+
+export type InternalBasePostInput<T extends Record<string, any>> = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   * */
+  uri: string;
+  /** Freshdesk api key */
+  token: string;
+  /** data to send to api */
+  data: T;
+};

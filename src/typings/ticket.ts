@@ -29,3 +29,17 @@ export const Ticket = z.object({
 });
 
 export const Tickets = z.array(Ticket);
+
+export const NewTicketInput = z.object({
+  name: z.string().optional(),
+  email: z.string().optional(),
+  phone: z.string().optional(),
+  subject: z.string(),
+  description: z.string(),
+  status: z.number(),
+  priority: z.number(),
+  source: z.number(),
+  group_id: z.number(),
+  type: z.string(),
+  custom_fields: z.record(z.string()).optional(),
+});
