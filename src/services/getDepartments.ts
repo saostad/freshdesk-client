@@ -3,9 +3,13 @@ import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Department, Departments } from "../typings/departments";
 import { getData } from "./getData";
+import { BaseGetInput } from "../typings/general";
 
-type GetDepartments = { baseUri: string; token: string };
-export async function getDepartments({ baseUri, token }: GetDepartments) {
+export async function getDepartments({
+  baseUri,
+  token,
+  doValidate,
+}: BaseGetInput) {
   writeLog(`getDepartments()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/departments`;
@@ -17,7 +21,9 @@ export async function getDepartments({ baseUri, token }: GetDepartments) {
     departments.push(...el["departments"]);
   });
 
-  validateOrFail({ data: departments, schema: Departments });
+  if (doValidate) {
+    validateOrFail({ data: departments, schema: Departments });
+  }
 
   writeLog(`${departments.length} departments downloaded.`, {
     stdout: true,

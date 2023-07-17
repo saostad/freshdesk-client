@@ -3,9 +3,9 @@ import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Agent, Agents } from "../typings/agent";
 import { getData } from "./getData";
+import { BaseGetInput } from "../typings/general";
 
-type GetAgent = { baseUri: string; token: string };
-export async function getAgents({ baseUri, token }: GetAgent) {
+export async function getAgents({ baseUri, token, doValidate }: BaseGetInput) {
   writeLog(`getAgent()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/agents`;
@@ -17,7 +17,9 @@ export async function getAgents({ baseUri, token }: GetAgent) {
     agents.push(...el["agents"]);
   });
 
-  validateOrFail({ data: agents, schema: Agents });
+  if (doValidate) {
+    validateOrFail({ data: agents, schema: Agents });
+  }
 
   writeLog(`${agents.length} agents downloaded.`, {
     stdout: true,

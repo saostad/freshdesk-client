@@ -3,9 +3,13 @@ import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Requester, Requesters } from "../typings/requester";
 import { getData } from "./getData";
+import { BaseGetInput } from "../typings/general";
 
-type GetRequesters = { baseUri: string; token: string };
-export async function getRequesters({ baseUri, token }: GetRequesters) {
+export async function getRequesters({
+  baseUri,
+  token,
+  doValidate,
+}: BaseGetInput) {
   writeLog(`getRequesters()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/requesters`;
@@ -17,7 +21,9 @@ export async function getRequesters({ baseUri, token }: GetRequesters) {
     requesters.push(...el["requesters"]);
   });
 
-  validateOrFail({ data: requesters, schema: Requesters });
+  if (doValidate) {
+    validateOrFail({ data: requesters, schema: Requesters });
+  }
 
   writeLog(`${requesters.length} requesters downloaded.`, {
     stdout: true,

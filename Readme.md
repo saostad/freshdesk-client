@@ -29,6 +29,8 @@ import { getAssets } from "freshdesk-client";
 import { getAssetTypes } from "freshdesk-client";
 import { getProducts } from "freshdesk-client";
 import { getLocations } from "freshdesk-client";
+import { getServiceCategories } from "./services/getServiceCategories";
+import { getServiceItems } from "./services/getServiceItems";
 import {
   TicketPriority,
   TicketSourceType,
@@ -47,30 +49,50 @@ const ticketsWithFilter = await getTickets({
   filter: "status:3 OR status:2",
 });
 
-const requesters = await getRequesters({ baseUri, token: tokenKey });
+const requesters = await getRequesters({
+  baseUri,
+  token: tokenKey,
+  doValidate: true,
+});
 
 const departments = await getDepartments({
   baseUri,
   token: tokenKey,
+  doValidate: true,
 });
 
-const agents = await getAgents({ baseUri, token: tokenKey });
+const agents = await getAgents({ baseUri, token: tokenKey, doValidate: true });
 
-const assets = await getAssets({ baseUri, token: tokenKey });
+const assets = await getAssets({ baseUri, token: tokenKey, doValidate: true });
 
 const assetTypes = await getAssetTypes({
   baseUri,
   token: tokenKey,
+  doValidate: true,
 });
 
 const products = await getProducts({
   baseUri,
   token: tokenKey,
+  doValidate: true,
 });
 
 const locations = await getLocations({
   baseUri,
   token: tokenKey,
+  doValidate: true,
+});
+
+const serviceItems = await getServiceItems({
+  baseUri,
+  token,
+  doValidate: true,
+});
+
+const serviceCategories = await getServiceCategories({
+  baseUri,
+  token,
+  doValidate: true,
 });
 
 const ticket = await createTicket({

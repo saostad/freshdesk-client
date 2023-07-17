@@ -5,13 +5,7 @@ import {
 } from "../typings/service-category";
 import { getData } from "./getData";
 import { validateOrFail } from "../helpers/util";
-
-type GetServiceCategories = {
-  baseUri: string;
-  token: string;
-  /** set to true to validate api response against the zod schema */
-  doValidate?: boolean;
-};
+import { BaseGetInput } from "../typings/general";
 
 /**
  * View List of Service Categories
@@ -32,7 +26,7 @@ export const getServiceCategories = async ({
   baseUri,
   token,
   doValidate,
-}: GetServiceCategories) => {
+}: BaseGetInput) => {
   const response = await getData<z.infer<typeof ServiceCategory>>({
     uri: `${baseUri}/api/v2/service_catalog/categories`,
     token,

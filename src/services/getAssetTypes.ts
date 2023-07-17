@@ -3,9 +3,13 @@ import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { AssetType, AssetTypes } from "../typings/assetType";
 import { getData } from "./getData";
+import { BaseGetInput } from "../typings/general";
 
-type GetAssetTypes = { baseUri: string; token: string };
-export async function getAssetTypes({ baseUri, token }: GetAssetTypes) {
+export async function getAssetTypes({
+  baseUri,
+  token,
+  doValidate,
+}: BaseGetInput) {
   writeLog(`getAssetTypes()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/asset_types`;
@@ -17,7 +21,9 @@ export async function getAssetTypes({ baseUri, token }: GetAssetTypes) {
     assetsTypes.push(...el["asset_types"]);
   });
 
-  validateOrFail({ data: assetsTypes, schema: AssetTypes });
+  if (doValidate) {
+    validateOrFail({ data: assetsTypes, schema: AssetTypes });
+  }
 
   writeLog(`${assetsTypes.length} assetsTypes downloaded.`, {
     stdout: true,

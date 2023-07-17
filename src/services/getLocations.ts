@@ -3,9 +3,13 @@ import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Locations, Location } from "../typings/location";
 import { getData } from "./getData";
+import { BaseGetInput } from "../typings/general";
 
-type GetLocation = { baseUri: string; token: string };
-export async function getLocations({ baseUri, token }: GetLocation) {
+export async function getLocations({
+  baseUri,
+  token,
+  doValidate,
+}: BaseGetInput) {
   writeLog(`getLocations()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/locations`;
@@ -17,7 +21,9 @@ export async function getLocations({ baseUri, token }: GetLocation) {
     locations.push(...el["locations"]);
   });
 
-  validateOrFail({ data: locations, schema: Locations });
+  if (doValidate) {
+    validateOrFail({ data: locations, schema: Locations });
+  }
 
   writeLog(`${locations.length} locations downloaded.`, {
     stdout: true,

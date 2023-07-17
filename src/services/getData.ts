@@ -1,16 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { writeLog } from "fast-node-logger";
 import { isMoreDataAvailable, getNexLink } from "../helpers/util";
+import { InternalBaseGetInput } from "../typings/general";
 
-type GetData = {
-  /** full endpoint url, including domain, api version and endpoint
-   * @example https://domain.freshservice.com/api/v2/tickets
-   */
-  uri: string;
-  token: string;
-  /** @info You can request for additional resources using the "include" keyword. For example you can embed the requester's details within the ticket view API by using the following command.
-   * @ref for acceptable values refer to [freshservice api documentations](https://api.freshservice.com/#embedding). */
-  include?: string;
+type GetData = InternalBaseGetInput & {
   /** configurations related to get tickets endpoint  */
   getTicketsConfigs?: {
     /** @info You can filter the tickets using the "filter" keyword.
@@ -36,13 +29,14 @@ export async function getData<T>({
 
     const params: AxiosRequestConfig<any>["params"] = {
       per_page: 100,
-      query: getTicketsConfigs?.filter
-        ? `"${getTicketsConfigs.filter}"`
-        : undefined,
     };
 
     if (include) {
       params.include = include;
+    }
+
+    if (getTicketsConfigs?.filter) {
+      params.query = `"${getTicketsConfigs.filter}"`;
     }
 
     const config: AxiosRequestConfig = {
