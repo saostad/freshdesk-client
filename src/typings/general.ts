@@ -36,3 +36,12 @@ export type InternalBasePostInput<T extends Record<string, any>> = {
   /** data to send to api */
   data: T;
 };
+
+export type BaseCreateInput = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   */
+  baseUri: string;
+  /** Freshdesk api key */
+  token: string;
+};

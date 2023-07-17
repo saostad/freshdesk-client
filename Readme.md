@@ -31,6 +31,7 @@ import { getProducts } from "freshdesk-client";
 import { getLocations } from "freshdesk-client";
 import { getServiceCategories } from "./services/getServiceCategories";
 import { getServiceItems } from "./services/getServiceItems";
+import { createServiceItem } from "./services/createServiceItem";
 import {
   TicketPriority,
   TicketSourceType,
@@ -93,6 +94,18 @@ const serviceCategories = await getServiceCategories({
   baseUri,
   token,
   doValidate: true,
+});
+
+const newServiceItem = await createServiceItem({
+  baseUri,
+  token,
+  serviceItem: {
+    name: "Test service item",
+    description: "Test service item description",
+    category_id: 100000001863,
+    visibility: 1,
+    short_description: "Test service item short description",
+  },
 });
 
 const ticket = await createTicket({

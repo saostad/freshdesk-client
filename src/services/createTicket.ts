@@ -2,6 +2,7 @@ import { writeLog } from "fast-node-logger";
 import { Ticket, NewTicketInput } from "../typings/ticket";
 import { z } from "zod";
 import { postData } from "./postData";
+import { BaseCreateInput } from "../typings/general";
 
 // https://api.freshservice.com/v2/#create_ticket
 /** Ticket Properties
@@ -59,9 +60,7 @@ export enum TicketPriority {
   Urgent = 4,
 }
 
-type CreateTicket = {
-  baseUri: string;
-  token: string;
+type CreateTicket = BaseCreateInput & {
   ticket: z.infer<typeof NewTicketInput>;
 };
 

@@ -15,15 +15,38 @@ export {
   TicketStatus,
 } from "./services/createTicket";
 
+// comments this section before publishing to npm
+
 // import { config } from "dotenv";
 // import { getTickets } from "./services/getTickets";
 // import { getServiceCategories } from "./services/getServiceCategories";
 // import { getServiceItems } from "./services/getServiceItems";
+// import {
+//   TicketPriority,
+//   TicketSourceType,
+//   TicketStatus,
+//   createTicket,
+// } from "./services/createTicket";
+// import { createServiceItem } from "./services/createServiceItem";
 // config();
 
 // const baseUri = process.env.SANDBOX_BASE_URL!;
 // const token = process.env.SANDBOX_TOKEN!;
 // const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
+
+// createServiceItem({
+//   baseUri,
+//   token,
+//   serviceItem: {
+//     name: "Test service item",
+//     description: "Test service item description",
+//     category_id: Number(serviceCategoryId),
+//     visibility: 1,
+//     short_description: "Test service item short description",
+//   },
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
 
 // getServiceItems({
 //   baseUri,
@@ -46,6 +69,23 @@ export {
 //   baseUri,
 //   token,
 //   filter: "status:3 OR status:2",
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 24 => `, res);
+// });
+
+// createTicket({
+//   baseUri,
+//   token,
+//   ticket: {
+//     description: "Test ticket description",
+//     subject: "Test ticket subject",
+//     type: "Incident",
+//     priority: TicketPriority.Urgent,
+//     status: TicketStatus.Open,
+//     source: TicketSourceType.Email,
+//     email: "requester domain email",
+//     group_id: 60000000000, // group id to assign ticket to
+//   },
 // }).then((res) => {
 //   console.log(`File: index.ts,`, `Line: 24 => `, res);
 // });
