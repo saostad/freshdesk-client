@@ -20,27 +20,11 @@ $ npm install freshdesk-client
 
 ## How to use
 
-```ts
-import { getTickets } from "freshdesk-client";
-import { getRequesters } from "freshdesk-client";
-import { getDepartments } from "freshdesk-client";
-import { getAgents } from "freshdesk-client";
-import { getAssets } from "freshdesk-client";
-import { getAssetTypes } from "freshdesk-client";
-import { getProducts } from "freshdesk-client";
-import { getLocations } from "freshdesk-client";
-import { getServiceCategories } from "./services/getServiceCategories";
-import { getServiceItems } from "./services/getServiceItems";
-import { createServiceItem } from "./services/createServiceItem";
-import {
-  TicketPriority,
-  TicketSourceType,
-  TicketStatus,
-  createTicket,
-} from "freshdesk-client";
-
 const tokenKey = "FRESHDESK_TOKEN_KEY";
 const baseUri = "https://YOUR_DOMAIN.freshservice.com";
+
+```ts
+import { getTickets } from "freshdesk-client";
 
 const tickets = await getTickets({ baseUri, token: tokenKey });
 
@@ -49,53 +33,83 @@ const ticketsWithFilter = await getTickets({
   token,
   filter: "status:3 OR status:2",
 });
+```
 
+```ts
+import { getRequesters } from "freshdesk-client";
 const requesters = await getRequesters({
   baseUri,
   token: tokenKey,
   doValidate: true,
 });
+```
 
+```ts
+import { getDepartments } from "freshdesk-client";
 const departments = await getDepartments({
   baseUri,
   token: tokenKey,
   doValidate: true,
 });
+```
 
+```ts
+import { getAgents } from "freshdesk-client";
 const agents = await getAgents({ baseUri, token: tokenKey, doValidate: true });
+```
 
+```ts
+import { getAssets } from "freshdesk-client";
 const assets = await getAssets({ baseUri, token: tokenKey, doValidate: true });
+```
 
+```ts
+import { getAssetTypes } from "freshdesk-client";
 const assetTypes = await getAssetTypes({
   baseUri,
   token: tokenKey,
   doValidate: true,
 });
+```
 
+```ts
+import { getProducts } from "freshdesk-client";
 const products = await getProducts({
   baseUri,
   token: tokenKey,
   doValidate: true,
 });
+```
 
+```ts
+import { getLocations } from "freshdesk-client";
 const locations = await getLocations({
   baseUri,
   token: tokenKey,
   doValidate: true,
 });
+```
 
+```ts
+import { getServiceItems } from "freshdesk-client";
 const serviceItems = await getServiceItems({
   baseUri,
   token,
   doValidate: true,
 });
+```
 
+```ts
+import { getServiceCategories } from "freshdesk-client";
 const serviceCategories = await getServiceCategories({
   baseUri,
   token,
   doValidate: true,
 });
+```
 
+```ts
+import { createServiceItem } from "freshdesk-client";
 const newServiceItem = await createServiceItem({
   baseUri,
   token,
@@ -107,6 +121,15 @@ const newServiceItem = await createServiceItem({
     short_description: "Test service item short description",
   },
 });
+```
+
+```ts
+import {
+  TicketPriority,
+  TicketSourceType,
+  TicketStatus,
+  createTicket,
+} from "freshdesk-client";
 
 const ticket = await createTicket({
   baseUri,
