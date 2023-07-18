@@ -20,8 +20,10 @@ $ npm install freshdesk-client
 
 ## How to use
 
+```ts
 const tokenKey = "FRESHDESK_TOKEN_KEY";
 const baseUri = "https://YOUR_DOMAIN.freshservice.com";
+```
 
 ```ts
 import { getTickets } from "freshdesk-client";
