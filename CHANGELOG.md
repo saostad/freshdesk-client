@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.4.1](https://github.com/saostad/freshdesk-client/compare/v1.4.0...v1.4.1)
+
+> 18 July 2023
+
+- doc: readme updated [`9fb91ca`](https://github.com/saostad/freshdesk-client/commit/9fb91ca3b7f0c2807700f0ecdd842fb04338f066)
+- enhance: jsdoc for create ticket enums [`76c3c55`](https://github.com/saostad/freshdesk-client/commit/76c3c5540b8b0a5b01f437fbac8da948b50cf969)
+- doc: change-log updated. [`11e7f1a`](https://github.com/saostad/freshdesk-client/commit/11e7f1adc83500c6bc0c26120fae6d2177be7666)
+
 #### [v1.4.0](https://github.com/saostad/freshdesk-client/compare/v1.3.0...v1.4.0)
 
 > 17 July 2023
