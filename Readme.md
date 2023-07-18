@@ -133,7 +133,7 @@ import {
   createTicket,
 } from "freshdesk-client";
 
-const ticket = await createTicket({
+const newTicket = await createTicket({
   baseUri,
   token,
   ticket: {
