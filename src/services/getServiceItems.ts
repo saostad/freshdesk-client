@@ -1,9 +1,7 @@
 import { z } from "zod";
 import { BaseGetInput } from "../typings/general";
 import {
-  ServiceItem,
   ServiceItemOptional,
-  ServiceItems,
   ServiceItemsOptional,
 } from "../typings/service-item";
 import { getData } from "./getData";
@@ -13,12 +11,12 @@ import { writeLog } from "fast-node-logger";
 type GetServiceCategories = BaseGetInput &
   (
     | {
-        category_id?: string;
-        workspace_id?: never;
+        categoryId?: string;
+        workspaceId?: never;
       }
     | {
-        category_id?: never;
-        workspace_id?: string;
+        categoryId?: never;
+        workspaceId?: string;
       }
   );
 
@@ -44,8 +42,8 @@ export const getServiceItems = async ({
   baseUri,
   token,
   doValidate,
-  category_id,
-  workspace_id,
+  categoryId,
+  workspaceId,
 }: GetServiceCategories) => {
   const url = `${baseUri}/api/v2/service_catalog/items`;
 
@@ -53,8 +51,8 @@ export const getServiceItems = async ({
     token,
     uri: url,
     params: {
-      ...(category_id && { category_id }),
-      ...(workspace_id && { workspace_id }),
+      ...(categoryId && { category_id: categoryId }),
+      ...(workspaceId && { workspace_id: workspaceId }),
     },
   });
 

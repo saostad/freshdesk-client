@@ -17,22 +17,36 @@ export {
 
 // comments this section before publishing to npm
 
-// import { config } from "dotenv";
-// import { getTickets } from "./services/getTickets";
-// import { getServiceCategories } from "./services/getServiceCategories";
-// import { getServiceItems } from "./services/getServiceItems";
-// import {
-//   TicketPriority,
-//   TicketSourceType,
-//   TicketStatus,
-//   createTicket,
-// } from "./services/createTicket";
-// import { createServiceItem } from "./services/createServiceItem";
-// config();
+import { config } from "dotenv";
+import { getTickets } from "./services/getTickets";
+import { getServiceCategories } from "./services/getServiceCategories";
+import { getServiceItems } from "./services/getServiceItems";
+import {
+  TicketPriority,
+  TicketSourceType,
+  TicketStatus,
+  createTicket,
+} from "./services/createTicket";
+import { createServiceItem } from "./services/createServiceItem";
+import { getAssets } from "./services/getAssets";
+config();
 
-// const baseUri = process.env.SANDBOX_BASE_URL!;
-// const token = process.env.SANDBOX_TOKEN!;
-// const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
+const baseUri = process.env.SANDBOX_BASE_URL!;
+const token = process.env.SANDBOX_TOKEN!;
+const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
+
+getAssets({
+  baseUri,
+  token,
+  doValidate: false,
+  // include: ["type_fields"],
+  sort: {
+    orderBy: "created_at",
+    orderType: "asc",
+  },
+}).then((res) => {
+  console.log(`File: index.ts,`, `Line: 36 => `, res);
+});
 
 // createServiceItem({
 //   baseUri,
