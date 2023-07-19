@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.0](https://github.com/saostad/freshdesk-client/compare/v1.4.2...v1.5.0)
+
+> 19 July 2023
+
+- middle: adding https://api.freshservice.com/v2/#search_assets [`214a47a`](https://github.com/saostad/freshdesk-client/commit/214a47afd011847263982b283d0d4ea05c46539f)
+- feat: add getAssets filter, search operators and sort options [`2325e50`](https://github.com/saostad/freshdesk-client/commit/2325e50b935e95357d56df097c719a400dc25e60)
+- doc: change-log updated. [`f069b7b`](https://github.com/saostad/freshdesk-client/commit/f069b7bbd2ce655b87050c8f38ec5b42c60d87d6)
+
 #### [v1.4.2](https://github.com/saostad/freshdesk-client/compare/v1.4.1...v1.4.2)
 
 > 18 July 2023
