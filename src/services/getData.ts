@@ -28,9 +28,7 @@ export async function getData<T>({
 
     writeLog(`getting data from ${uri}`, { stdout: true, level: "info" });
 
-    const requestParams: AxiosRequestConfig<any>["params"] = {
-      per_page: 100,
-    };
+    const requestParams: AxiosRequestConfig<any>["params"] = {};
 
     if (include) {
       requestParams.include = include;

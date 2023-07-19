@@ -64,7 +64,7 @@ export const Asset = z.object({
   /** 	datetime	Date and time when the asset was updated.READ ONLY */
   updated_at: z.string().nullable(),
   /** Will return all fields that are specific to each asset type. For example, for Hardware Asset Type, including type_fields will return fields such as Product_ID, Vendor_ID, Serial_number, etc. */
-  type_fields: type_fields.partial(),
+  type_fields: type_fields.partial().optional(),
 });
 
 export const Assets = z.array(Asset);

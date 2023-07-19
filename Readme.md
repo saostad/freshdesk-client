@@ -62,7 +62,27 @@ const agents = await getAgents({ baseUri, token: tokenKey, doValidate: true });
 
 ```ts
 import { getAssets } from "freshdesk-client";
-const assets = await getAssets({ baseUri, token: tokenKey, doValidate: true });
+const assets = await getAssets({
+  baseUri,
+  token,
+  doValidate: true,
+  include: ["type_fields"],
+  sort: {
+    orderBy: "created_at",
+    orderType: "asc",
+  },
+  filters: [
+    {
+      filterKey: "asset_type_id",
+      filterValue: 10000000000000001,
+    },
+    {
+      filterKey: "asset_type_id",
+      filterValue: 10000000000000002,
+      operator: "OR",
+    },
+  ],
+});
 ```
 
 ```ts
