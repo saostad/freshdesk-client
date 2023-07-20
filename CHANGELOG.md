@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.6.2](https://github.com/saostad/freshdesk-client/compare/v1.6.1...v1.6.2)
+
+> 20 July 2023
+
+- doc: readme updated [`1a94cf4`](https://github.com/saostad/freshdesk-client/commit/1a94cf491811405b6539b8840ad264bb603fa329)
+- doc: change-log updated. [`d3945f3`](https://github.com/saostad/freshdesk-client/commit/d3945f34871de2c663e93dc3ff4fe7a738a436c5)
+
 #### [v1.6.1](https://github.com/saostad/freshdesk-client/compare/v1.6.0...v1.6.1)
 
 > 20 July 2023
