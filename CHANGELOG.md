@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.6.0](https://github.com/saostad/freshdesk-client/compare/v1.5.0...v1.6.0)
+
+> 20 July 2023
+
+- feat: add createAsset and getAssetById [`959a660`](https://github.com/saostad/freshdesk-client/commit/959a6609dc473fd88e1745e1bd1905bb93fb8f87)
+- doc: change-log updated. [`d224e7b`](https://github.com/saostad/freshdesk-client/commit/d224e7b2e7fc59c3f0ce0cc2242055a53fbde869)
+
 #### [v1.5.0](https://github.com/saostad/freshdesk-client/compare/v1.4.2...v1.5.0)
 
 > 19 July 2023
