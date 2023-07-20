@@ -2,7 +2,7 @@ import { writeLog } from "fast-node-logger";
 import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Product, Products } from "../typings/product";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
 export async function getProducts({

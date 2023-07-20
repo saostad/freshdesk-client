@@ -3,7 +3,6 @@ import { InternalBasePostInput } from "../typings/general";
 
 /**
  * @description post data to freshservice api
- *
  */
 export async function postData<
   InputData extends Record<string, any> = any,

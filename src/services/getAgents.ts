@@ -2,7 +2,7 @@ import { writeLog } from "fast-node-logger";
 import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Agent, Agents } from "../typings/agent";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
 export async function getAgents({ baseUri, token, doValidate }: BaseGetInput) {

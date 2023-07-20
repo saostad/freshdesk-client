@@ -3,7 +3,7 @@ import {
   ServiceCategory,
   ServiceCategories as schema,
 } from "../typings/service-category";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 import { validateOrFail } from "../helpers/util";
 import { BaseGetInput } from "../typings/general";
 

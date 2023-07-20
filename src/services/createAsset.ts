@@ -2,7 +2,7 @@ import { z } from "zod";
 import { Asset } from "../typings/asset";
 import { BaseCreateInput } from "../typings/general";
 import { writeLog } from "fast-node-logger";
-import { postData } from "./postData";
+import { postData } from "../helpers/postData";
 
 type CreateAsset = BaseCreateInput & {
   asset: z.infer<typeof Asset>;

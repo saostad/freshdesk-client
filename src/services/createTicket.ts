@@ -1,7 +1,7 @@
 import { writeLog } from "fast-node-logger";
 import { Ticket, NewTicketInput } from "../typings/ticket";
 import { z } from "zod";
-import { postData } from "./postData";
+import { postData } from "../helpers/postData";
 import { BaseCreateInput } from "../typings/general";
 
 /** 

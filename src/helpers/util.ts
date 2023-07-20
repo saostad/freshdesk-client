@@ -9,6 +9,7 @@ type Credential = {
   password: string;
 };
 
+/** get credential object from operating system  */
 export async function getCredential(targetName: string): Promise<Credential> {
   writeLog([`getCredential`, targetName], { level: "trace" });
 

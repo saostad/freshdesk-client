@@ -1,7 +1,7 @@
 import { validateOrFail } from "../helpers/util";
 import { Asset } from "../typings/asset";
 import { BaseGetInput } from "../typings/general";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 
 type GetAssetByIdInput = BaseGetInput & {
   /** set to true to include "type_fields" */

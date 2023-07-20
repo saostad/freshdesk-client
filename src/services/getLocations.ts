@@ -2,7 +2,7 @@ import { writeLog } from "fast-node-logger";
 import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
 import { Locations, Location } from "../typings/location";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
 export async function getLocations({

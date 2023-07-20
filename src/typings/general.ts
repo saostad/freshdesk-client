@@ -1,13 +1,10 @@
-export type InternalBaseInput = {
+export type InternalBaseGetInput = {
   /** full endpoint url, including domain, api version and endpoint
    * @example https://domain.freshservice.com/api/v2/tickets
    */
   uri: string;
   /** Freshdesk api key */
   token: string;
-};
-
-export type InternalBaseGetInput = InternalBaseInput & {
   /** @info You can request for additional resources using the "include" keyword. For example you can embed the requester's details within the ticket view API by using the following command.
    * @ref for acceptable values refer to [freshservice api documentations](https://api.freshservice.com/#embedding). */
   include?: string;
@@ -29,7 +26,7 @@ export type BaseGetInput = {
 export type InternalBasePostInput<T extends Record<string, any>> = {
   /** base freshdesk url
    * @example https://domain.freshservice.com
-   * */
+   */
   uri: string;
   /** Freshdesk api key */
   token: string;
@@ -38,6 +35,26 @@ export type InternalBasePostInput<T extends Record<string, any>> = {
 };
 
 export type BaseCreateInput = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   */
+  baseUri: string;
+  /** Freshdesk api key */
+  token: string;
+};
+
+export type InternalBasePutInput<T extends Record<string, any>> = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   */
+  uri: string;
+  /** Freshdesk api key */
+  token: string;
+  /** data to send to api */
+  data: T;
+};
+
+export type BaseUpdateInput = {
   /** base freshdesk url
    * @example https://domain.freshservice.com
    */

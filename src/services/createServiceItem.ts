@@ -1,5 +1,5 @@
 import { writeLog } from "fast-node-logger";
-import { postData } from "./postData";
+import { postData } from "../helpers/postData";
 import { z } from "zod";
 import { ServiceItem } from "../typings/service-item";
 import { BaseCreateInput } from "../typings/general";

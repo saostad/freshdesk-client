@@ -4,7 +4,7 @@ import {
   ServiceItemOptional,
   ServiceItemsOptional,
 } from "../typings/service-item";
-import { getData } from "./getData";
+import { getData } from "../helpers/getData";
 import { validateOrFail } from "../helpers/util";
 import { writeLog } from "fast-node-logger";
 
