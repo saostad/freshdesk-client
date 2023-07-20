@@ -99,7 +99,7 @@ import { getAssetById } from "freshdesk-client";
 getAssetById({
   baseUri,
   token,
-  assetId: newAsset,
+  assetId: 123, // asset display_id
   doValidate: true,
   include: true,
 });
