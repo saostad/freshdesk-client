@@ -113,7 +113,7 @@ createAsset({
   token,
   asset: {
     name: "Test asset",
-    asset_type_id: Number(servicesAssetTypeId),
+    asset_type_id: 123,
   },
 });
 ```
