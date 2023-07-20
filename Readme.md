@@ -39,7 +39,8 @@ const ticketsWithFilter = await getTickets({
 
 ```ts
 import { getRequesters } from "freshdesk-client";
-const requesters = await getRequesters({
+
+getRequesters({
   baseUri,
   token: tokenKey,
   doValidate: true,
@@ -48,7 +49,8 @@ const requesters = await getRequesters({
 
 ```ts
 import { getDepartments } from "freshdesk-client";
-const departments = await getDepartments({
+
+getDepartments({
   baseUri,
   token: tokenKey,
   doValidate: true,
@@ -57,12 +59,18 @@ const departments = await getDepartments({
 
 ```ts
 import { getAgents } from "freshdesk-client";
-const agents = await getAgents({ baseUri, token: tokenKey, doValidate: true });
+
+getAgents({
+  baseUri,
+  token: tokenKey,
+  doValidate: true,
+});
 ```
 
 ```ts
 import { getAssets } from "freshdesk-client";
-const assets = await getAssets({
+
+getAssets({
   baseUri,
   token,
   doValidate: true,
@@ -86,8 +94,34 @@ const assets = await getAssets({
 ```
 
 ```ts
+import { getAssetById } from "freshdesk-client";
+
+getAssetById({
+  baseUri,
+  token,
+  assetId: newAsset,
+  doValidate: true,
+  include: true,
+});
+```
+
+```ts
+import { createAsset } from "freshdesk-client";
+
+createAsset({
+  baseUri,
+  token,
+  asset: {
+    name: "Test asset",
+    asset_type_id: Number(servicesAssetTypeId),
+  },
+});
+```
+
+```ts
 import { getAssetTypes } from "freshdesk-client";
-const assetTypes = await getAssetTypes({
+
+getAssetTypes({
   baseUri,
   token: tokenKey,
   doValidate: true,
@@ -96,7 +130,8 @@ const assetTypes = await getAssetTypes({
 
 ```ts
 import { getProducts } from "freshdesk-client";
-const products = await getProducts({
+
+getProducts({
   baseUri,
   token: tokenKey,
   doValidate: true,
@@ -105,7 +140,8 @@ const products = await getProducts({
 
 ```ts
 import { getLocations } from "freshdesk-client";
-const locations = await getLocations({
+
+getLocations({
   baseUri,
   token: tokenKey,
   doValidate: true,
@@ -114,7 +150,8 @@ const locations = await getLocations({
 
 ```ts
 import { getServiceItems } from "freshdesk-client";
-const serviceItems = await getServiceItems({
+
+getServiceItems({
   baseUri,
   token,
   doValidate: true,
@@ -123,7 +160,8 @@ const serviceItems = await getServiceItems({
 
 ```ts
 import { getServiceCategories } from "freshdesk-client";
-const serviceCategories = await getServiceCategories({
+
+getServiceCategories({
   baseUri,
   token,
   doValidate: true,
@@ -132,7 +170,8 @@ const serviceCategories = await getServiceCategories({
 
 ```ts
 import { createServiceItem } from "freshdesk-client";
-const newServiceItem = await createServiceItem({
+
+createServiceItem({
   baseUri,
   token,
   serviceItem: {
@@ -153,7 +192,7 @@ import {
   createTicket,
 } from "freshdesk-client";
 
-const newTicket = await createTicket({
+createTicket({
   baseUri,
   token,
   ticket: {

@@ -26,43 +26,44 @@ const type_fields = z.object({
   procurement_type_16000738831: z.string().nullable(),
   depreciation_id: z.number().nullable(),
   salvage: z.number().nullable(),
+  health_16000738807: z.enum(["Operational", "Needs Attention"]),
 });
 
 export const Asset = z.object({
   /** number	Unique ID of the asset. */
-  id: z.number(),
+  id: z.number().optional(),
   /** 	numbers	Display ID of the asset. */
-  display_id: z.number().nullable(),
+  display_id: z.number().nullable().optional(),
   /** 	string	Name of the asset.MANDATORY */
   name: z.string(),
   /** 	string	Description of the asset. */
-  description: z.string().nullable(),
+  description: z.string().nullable().optional(),
   /** 	number	ID of the asset type.MANDATORY */
   asset_type_id: z.number(),
   /** 	string	Asset tag of the asset. */
-  asset_tag: z.string().nullable(),
+  asset_tag: z.string().nullable().optional(),
   /** 	string	Impact of the asset. */
-  impact: z.enum(["low", "medium", "high"]),
+  impact: z.enum(["low", "medium", "high"]).optional(),
   /** 	string	Indicates whether the asset was created by a user or discovery tools (Probe or Agent).READ ONLY */
-  author_type: z.string().nullable(),
+  author_type: z.string().nullable().optional(),
   /** 	string	Usage type of the asset (Loaner / Permanent). */
-  usage_type: z.enum(["permanent", "loaner"]),
+  usage_type: z.enum(["permanent", "loaner"]).optional(),
   /** 	number	ID of the associated user (Used By). */
-  user_id: z.number().nullable(),
+  user_id: z.number().nullable().optional(),
   /** 	number	ID of the associated location. */
-  location_id: z.number().nullable(),
+  location_id: z.number().nullable().optional(),
   /** 	number	ID of the associated department. */
-  department_id: z.number().nullable(),
+  department_id: z.number().nullable().optional(),
   /** 	number	ID of the associated agent (Managed By). */
-  agent_id: z.number().nullable(),
+  agent_id: z.number().nullable().optional(),
   /** 	number	ID of the associated agent group (Managed By Group). */
-  group_id: z.number().nullable(),
+  group_id: z.number().nullable().optional(),
   /** 	datetime	Date and time when the asset was assigned. */
-  assigned_on: z.string().nullable(),
+  assigned_on: z.string().nullable().optional(),
   /** 	datetime	Date and time when the asset was created.READ ONLY */
-  created_at: z.string(),
+  created_at: z.string().optional(),
   /** 	datetime	Date and time when the asset was updated.READ ONLY */
-  updated_at: z.string().nullable(),
+  updated_at: z.string().nullable().optional(),
   /** Will return all fields that are specific to each asset type. For example, for Hardware Asset Type, including type_fields will return fields such as Product_ID, Vendor_ID, Serial_number, etc. */
   type_fields: type_fields.partial().optional(),
 });

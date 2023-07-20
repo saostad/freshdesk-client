@@ -4,8 +4,6 @@ export { getDepartments } from "./services/getDepartments";
 export { getServiceCategories } from "./services/getServiceCategories";
 export { getServiceItems } from "./services/getServiceItems";
 export { getAgents } from "./services/getAgents";
-export { getAssets } from "./services/getAssets";
-export { getAssetTypes } from "./services/getAssetTypes";
 export { getProducts } from "./services/getProducts";
 export { getLocations } from "./services/getLocations";
 export {
@@ -14,6 +12,10 @@ export {
   TicketSourceType,
   TicketStatus,
 } from "./services/createTicket";
+export { getAssets } from "./services/getAssets";
+export { getAssetTypes } from "./services/getAssetTypes";
+export { createAsset } from "./services/createAsset";
+export { getAssetById } from "./services/getAssetById";
 
 // comments this section before publishing to npm
 
@@ -30,12 +32,37 @@ export {
 // import { createServiceItem } from "./services/createServiceItem";
 // import { getAssets } from "./services/getAssets";
 // import { getAssetTypes } from "./services/getAssetTypes";
+// import { createAsset } from "./services/createAsset";
+// import { getAssetById } from "./services/getAssetById";
 // config();
 
 // const baseUri = process.env.SANDBOX_BASE_URL!;
 // const token = process.env.SANDBOX_TOKEN!;
 // const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
 // const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
+
+// createAsset({
+//   baseUri,
+//   token,
+//   asset: {
+//     name: "Test asset",
+//     asset_type_id: Number(servicesAssetTypeId),
+//   },
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
+
+// const newAsset = 28;
+
+// getAssetById({
+//   baseUri,
+//   token,
+//   assetId: newAsset,
+//   doValidate: true,
+//   include: true,
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
 
 // getAssets({
 //   baseUri,
