@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.7.1](https://github.com/saostad/freshdesk-client/compare/v1.7.0...v1.7.1)
+
+> 21 July 2023
+
+- fix: return value from create functions [`8bda4ae`](https://github.com/saostad/freshdesk-client/commit/8bda4aea19a229c9813cc49243eb23174d93ad0a)
+- doc: change-log updated. [`08c44a6`](https://github.com/saostad/freshdesk-client/commit/08c44a64befe34d7e58bfcd12ccdbebc8112d5a1)
+
 #### [v1.7.0](https://github.com/saostad/freshdesk-client/compare/v1.6.2...v1.7.0)
 
 > 21 July 2023
