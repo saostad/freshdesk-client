@@ -1,3 +1,4 @@
+import { writeLog } from "fast-node-logger";
 import { deleteData } from "../helpers/deleteData";
 import { BaseDeleteInput } from "../typings/general";
 
@@ -25,6 +26,10 @@ export async function deleteAsset({ baseUri, token, displayId }: DeleteAsset) {
   const data = await deleteData({
     uri,
     token,
+  });
+
+  writeLog(`asset with display_id ${displayId} deleted successfully.`, {
+    level: "info",
   });
 
   return data;
