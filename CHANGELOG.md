@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.7.0](https://github.com/saostad/freshdesk-client/compare/v1.6.2...v1.7.0)
+
+> 21 July 2023
+
+- feat: add deleteAsset and updateAsset functions [`7eea244`](https://github.com/saostad/freshdesk-client/commit/7eea244408fde53ec38c6c67c4f4cdd67fd0a233)
+- refactor: basic http funcs moved to helpers folder [`c812127`](https://github.com/saostad/freshdesk-client/commit/c812127e42eee6aa8a134c898f2dc7580393eb92)
+- doc: change-log updated. [`91b64da`](https://github.com/saostad/freshdesk-client/commit/91b64dad24e4f5ecf1e12651d7906ed83e6d3439)
+
 #### [v1.6.2](https://github.com/saostad/freshdesk-client/compare/v1.6.1...v1.6.2)
 
 > 20 July 2023
