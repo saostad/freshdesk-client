@@ -21,16 +21,19 @@ export async function createServiceItem({
 
   const uri = `${baseUri}/api/v2/service-catalog/items`;
 
-  const data = await postData<z.infer<typeof ServiceItem>>({
+  const data = await postData<
+    z.infer<typeof ServiceItem>,
+    { service_item: z.infer<typeof ServiceItem> }
+  >({
     uri,
     token,
     data: serviceItem,
   });
 
-  writeLog(`service item created with id: ${data.id}`, {
+  writeLog(`service item created with id: ${data.service_item.id}`, {
     stdout: true,
     level: "info",
   });
 
-  return data;
+  return data.service_item;
 }

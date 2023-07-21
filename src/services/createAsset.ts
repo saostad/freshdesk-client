@@ -14,16 +14,19 @@ type CreateAsset = BaseCreateInput & {
 export async function createAsset({ baseUri, token, asset }: CreateAsset) {
   const uri = `${baseUri}/api/v2/assets`;
 
-  const data = await postData<z.infer<typeof Asset>>({
+  const data = await postData<
+    z.infer<typeof Asset>,
+    { asset: z.infer<typeof Asset> }
+  >({
     uri,
     token,
     data: asset,
   });
 
-  writeLog(`asset created with id: ${data.id}`, {
+  writeLog(`asset created with id: ${data.asset.id}`, {
     stdout: true,
     level: "info",
   });
 
-  return data;
+  return data.asset;
 }

@@ -118,7 +118,7 @@ export { deleteAsset } from "./services/deleteAsset";
 //   baseUri,
 //   token,
 //   serviceItem: {
-//     name: "Test service item",
+//     name: "Test service item 3",
 //     description: "Test service item description",
 //     category_id: Number(serviceCategoryId),
 //     visibility: 1,
@@ -163,8 +163,8 @@ export { deleteAsset } from "./services/deleteAsset";
 //     priority: TicketPriority.Urgent,
 //     status: TicketStatus.Open,
 //     source: TicketSourceType.Email,
-//     email: "requester domain email",
-//     group_id: 60000000000, // group id to assign ticket to
+//     email: "notification@kajimausa.com",
+//     group_id: 100000112850, // group id to assign ticket to
 //   },
 // }).then((res) => {
 //   console.log(`File: index.ts,`, `Line: 24 => `, res);
