@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.7.2](https://github.com/saostad/freshdesk-client/compare/v1.7.1...v1.7.2)
+
+> 21 July 2023
+
+- fix: asset delete, missing log message added [`d6013e4`](https://github.com/saostad/freshdesk-client/commit/d6013e427722a368322bb7285c96f9dd36dee7b8)
+- doc: change-log updated. [`dd96932`](https://github.com/saostad/freshdesk-client/commit/dd969327c241bc45cc6a9c925837ae9f7cc1153f)
+
 #### [v1.7.1](https://github.com/saostad/freshdesk-client/compare/v1.7.0...v1.7.1)
 
 > 21 July 2023
