@@ -16,6 +16,8 @@ export { getAssets } from "./services/getAssets";
 export { getAssetTypes } from "./services/getAssetTypes";
 export { createAsset } from "./services/createAsset";
 export { getAssetById } from "./services/getAssetById";
+export { updateAsset } from "./services/updateAsset";
+export { deleteAsset } from "./services/deleteAsset";
 
 // comments this section before publishing to npm
 
@@ -34,12 +36,33 @@ export { getAssetById } from "./services/getAssetById";
 // import { getAssetTypes } from "./services/getAssetTypes";
 // import { createAsset } from "./services/createAsset";
 // import { getAssetById } from "./services/getAssetById";
+// import { updateAsset } from "./services/updateAsset";
+// import { deleteAsset } from "./services/deleteAsset";
 // config();
 
 // const baseUri = process.env.SANDBOX_BASE_URL!;
 // const token = process.env.SANDBOX_TOKEN!;
 // const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
 // const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
+
+// deleteAsset({
+//   baseUri,
+//   token,
+//   displayId: 30,
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
+
+// updateAsset({
+//   baseUri,
+//   token,
+//   displayId: 30,
+//   asset: {
+//     name: "Test asset update",
+//   },
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
 
 // createAsset({
 //   baseUri,

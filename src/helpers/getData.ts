@@ -16,13 +16,13 @@ type GetData = InternalBaseGetInput & {
     filter?: string;
   };
 };
-export async function getData<T>({
+export async function getData<ReturnData>({
   token,
   uri,
   include,
   params,
   getTicketsConfigs,
-}: GetData): Promise<Array<Record<string, T[]>>> {
+}: GetData): Promise<Array<Record<string, ReturnData[]>>> {
   try {
     writeLog([`getData`, uri], { level: "trace" });
 
@@ -65,7 +65,7 @@ export async function getData<T>({
       if (nextLinkStr) {
         config.url = nextLinkStr;
 
-        apiResponse = await axios(config).catch((err) => {
+        apiResponse = await axios<ReturnData>(config).catch((err) => {
           writeLog(`error getting data from api.`, {
             stdout: true,
             level: "error",

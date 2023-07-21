@@ -68,67 +68,6 @@ getAgents({
 ```
 
 ```ts
-import { getAssets } from "freshdesk-client";
-
-getAssets({
-  baseUri,
-  token,
-  doValidate: true,
-  include: ["type_fields"],
-  sort: {
-    orderBy: "created_at",
-    orderType: "asc",
-  },
-  filters: [
-    {
-      filterKey: "asset_type_id",
-      filterValue: 10000000000000001,
-    },
-    {
-      filterKey: "asset_type_id",
-      filterValue: 10000000000000002,
-      operator: "OR",
-    },
-  ],
-});
-```
-
-```ts
-import { getAssetById } from "freshdesk-client";
-
-getAssetById({
-  baseUri,
-  token,
-  assetId: 123, // asset display_id
-  doValidate: true,
-  include: true,
-});
-```
-
-```ts
-import { createAsset } from "freshdesk-client";
-
-createAsset({
-  baseUri,
-  token,
-  asset: {
-    name: "Test asset",
-    asset_type_id: 123,
-  },
-});
-```
-
-```ts
-import { getAssetTypes } from "freshdesk-client";
-
-getAssetTypes({
-  baseUri,
-  token: tokenKey,
-  doValidate: true,
-});
-```
-
-```ts
 import { getProducts } from "freshdesk-client";
 
 getProducts({
@@ -205,5 +144,89 @@ createTicket({
     email: "requester domain email",
     group_id: 60000000000, // group id to assign ticket to
   },
+});
+```
+
+```ts
+import { getAssets } from "freshdesk-client";
+
+getAssets({
+  baseUri,
+  token,
+  doValidate: true,
+  include: ["type_fields"],
+  sort: {
+    orderBy: "created_at",
+    orderType: "asc",
+  },
+  filters: [
+    {
+      filterKey: "asset_type_id",
+      filterValue: 10000000000000001,
+    },
+    {
+      filterKey: "asset_type_id",
+      filterValue: 10000000000000002,
+      operator: "OR",
+    },
+  ],
+});
+```
+
+```ts
+import { getAssetById } from "freshdesk-client";
+
+getAssetById({
+  baseUri,
+  token,
+  assetId: 123, // asset display_id
+  doValidate: true,
+  include: true,
+});
+```
+
+```ts
+import { createAsset } from "freshdesk-client";
+
+createAsset({
+  baseUri,
+  token,
+  asset: {
+    name: "Test asset",
+    asset_type_id: 123,
+  },
+});
+```
+
+```ts
+import { getAssetTypes } from "freshdesk-client";
+
+getAssetTypes({
+  baseUri,
+  token: tokenKey,
+  doValidate: true,
+});
+```
+
+```ts
+import { updateAsset } from "./services/updateAsset";
+
+updateAsset({
+  baseUri,
+  token,
+  displayId: 30,
+  asset: {
+    name: "Test asset update",
+  },
+});
+```
+
+```ts
+import { deleteAsset } from "./services/deleteAsset";
+
+deleteAsset({
+  baseUri,
+  token,
+  displayId: 30,
 });
 ```

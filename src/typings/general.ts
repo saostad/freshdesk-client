@@ -23,7 +23,7 @@ export type BaseGetInput = {
   doValidate?: boolean;
 };
 
-export type InternalBasePostInput<T extends Record<string, any>> = {
+export type InternalBasePostInput<InputData extends Record<string, any>> = {
   /** base freshdesk url
    * @example https://domain.freshservice.com
    */
@@ -31,7 +31,7 @@ export type InternalBasePostInput<T extends Record<string, any>> = {
   /** Freshdesk api key */
   token: string;
   /** data to send to api */
-  data: T;
+  data: InputData;
 };
 
 export type BaseCreateInput = {
@@ -43,7 +43,7 @@ export type BaseCreateInput = {
   token: string;
 };
 
-export type InternalBasePutInput<T extends Record<string, any>> = {
+export type InternalBasePutInput<InputData = any> = {
   /** base freshdesk url
    * @example https://domain.freshservice.com
    */
@@ -51,10 +51,28 @@ export type InternalBasePutInput<T extends Record<string, any>> = {
   /** Freshdesk api key */
   token: string;
   /** data to send to api */
-  data: T;
+  data: InputData;
 };
 
 export type BaseUpdateInput = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   */
+  baseUri: string;
+  /** Freshdesk api key */
+  token: string;
+};
+
+export type InternalBaseDeleteInput = {
+  /** base freshdesk url
+   * @example https://domain.freshservice.com
+   */
+  uri: string;
+  /** Freshdesk api key */
+  token: string;
+};
+
+export type BaseDeleteInput = {
   /** base freshdesk url
    * @example https://domain.freshservice.com
    */

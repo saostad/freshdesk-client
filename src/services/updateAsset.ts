@@ -1,7 +1,21 @@
+import { z } from "zod";
+import { BaseUpdateInput } from "../typings/general";
+import { Asset } from "../typings/asset";
+import { putData } from "../helpers/putData";
+import { writeLog } from "fast-node-logger";
+
+type UpdateAsset = BaseUpdateInput & {
+  asset: Partial<z.infer<typeof Asset>>;
+  displayId: number;
+};
+
 /**
  * Update an Asset
 This operation allows you to update an existing asset.
 
+@ref https://api.freshservice.com/v2/#update_an_asset
+
+@note
 Attribute	Type	Description
 id	number	Unique ID of the asset.
 workspace_id	number	Workspace ID of the asset. The attribute is applicable only for accounts with the 'Workspaces' feature enabled.READ ONLY
@@ -24,7 +38,7 @@ updated_at	datetime	Date and time when the asset was updated.READ ONLY
 Asset Properties
 For the following attributes, the supported values are listed below.
 
-Attribute	Supported Values	Comments
+@note Attribute	Supported Values	Comments
 impact	low, medium, high	The default value is “low”
 usage_type	permanent, loaner	The default value is “permanent”
 PUT  /api/v2/assets/[display_id]
@@ -32,3 +46,27 @@ PUT  /api/v2/assets/[display_id]
 @example
 curl -v -u api_key:X -H "Content-Type: application/json" -X PUT -d '{ "name": "Macbook Pro 2","asset_type_id": 25, "asset_tag":"ASSET-9", "impact":"high", "usage_type":"loaner", "description":"13.3-inch (diagonal) LED-backlit glossy widescreen display,1440-by-900 resolution", "location_id":null, "agent_id":null, "department_id":null, "group_id":9, "assigned_on": "2014-07-26T12:25:04+05:30", "type_fields": { "product_25" : 10, "vendor_25" : 14, "cost_25":5000 , "salvage":100, "depreciation_id":30, "warranty_25":20, "acquisition_date_25":"2018-07-26T12:25:04+05:30", "warranty_expiry_date_25":"2018-07-26T12:25:04+05:30", "domain_25":1, "asset_state_25":"In Use", "serial_number_25":"SW12131133", "last_audit_date_25":"2014-07-26T12:25:04+05:30" } }' 'https://domain.freshservice.com/api/v2/assets/11'
  */
+export async function updateAsset({
+  asset,
+  baseUri,
+  token,
+  displayId,
+}: UpdateAsset) {
+  const uri = `${baseUri}/api/v2/assets/${displayId}`;
+
+  const data = await putData<
+    Partial<z.infer<typeof Asset>>,
+    { asset: z.infer<typeof Asset> }
+  >({
+    data: asset,
+    uri,
+    token,
+  });
+
+  writeLog(`asset updated with id: ${data.asset.display_id}`, {
+    stdout: true,
+    level: "info",
+  });
+
+  return data.asset;
+}

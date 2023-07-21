@@ -19,7 +19,7 @@ export async function postData<
     data,
   };
 
-  const apiResponse = await axios(config);
+  const apiResponse = await axios<ReturnData>(config);
 
   return apiResponse.data;
 }
