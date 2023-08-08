@@ -21,29 +21,29 @@ export { deleteAsset } from "./services/deleteAsset";
 
 // comments this section before publishing to npm
 
-import { config } from "dotenv";
-import { getTickets } from "./services/getTickets";
-import { getServiceCategories } from "./services/getServiceCategories";
-import { getServiceItems } from "./services/getServiceItems";
-import {
-  TicketPriority,
-  TicketSourceType,
-  TicketStatus,
-  createTicket,
-} from "./services/createTicket";
-import { createServiceItem } from "./services/createServiceItem";
-import { getAssets } from "./services/getAssets";
-import { getAssetTypes } from "./services/getAssetTypes";
-import { createAsset } from "./services/createAsset";
-import { getAssetById } from "./services/getAssetById";
-import { updateAsset } from "./services/updateAsset";
-import { deleteAsset } from "./services/deleteAsset";
-config();
+// import { config } from "dotenv";
+// import { getTickets } from "./services/getTickets";
+// import { getServiceCategories } from "./services/getServiceCategories";
+// import { getServiceItems } from "./services/getServiceItems";
+// import {
+//   TicketPriority,
+//   TicketSourceType,
+//   TicketStatus,
+//   createTicket,
+// } from "./services/createTicket";
+// import { createServiceItem } from "./services/createServiceItem";
+// import { getAssets } from "./services/getAssets";
+// import { getAssetTypes } from "./services/getAssetTypes";
+// import { createAsset } from "./services/createAsset";
+// import { getAssetById } from "./services/getAssetById";
+// import { updateAsset } from "./services/updateAsset";
+// import { deleteAsset } from "./services/deleteAsset";
+// config();
 
-const baseUri = process.env.PROD_BASE_URL!;
-const token = process.env.SANDBOX_TOKEN!;
-const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
-const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
+// const baseUri = process.env.PROD_BASE_URL!;
+// const token = process.env.SANDBOX_TOKEN!;
+// const serviceCategoryId = process.env.SANDBOX_SERVICE_CATEGORY_ID!;
+// const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
 
 // deleteAsset({
 //   baseUri,
@@ -106,13 +106,13 @@ const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
 //   console.log(`File: index.ts,`, `Line: 36 => `, res);
 // });
 
-getAssetTypes({
-  baseUri,
-  token,
-  doValidate: true,
-}).then((res) => {
-  console.log(`File: index.ts,`, `Line: 36 => `, res);
-});
+// getAssetTypes({
+//   baseUri,
+//   token,
+//   doValidate: true,
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
 
 // createServiceItem({
 //   baseUri,
