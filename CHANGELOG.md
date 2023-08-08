@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.7.4](https://github.com/saostad/freshdesk-client/compare/v1.7.3...v1.7.4)
+
+> 8 August 2023
+
+- fix: load env loading [`fd635fb`](https://github.com/saostad/freshdesk-client/commit/fd635fb71de8967c0de9abb25ea1e25a659442ca)
+- doc: change-log updated. [`99458ed`](https://github.com/saostad/freshdesk-client/commit/99458ed6b9bebb82e55a2e449747097c8bdd509a)
+
 #### [v1.7.3](https://github.com/saostad/freshdesk-client/compare/v1.7.2...v1.7.3)
 
 > 8 August 2023
