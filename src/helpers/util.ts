@@ -1,25 +1,7 @@
 import { createLogger, Logger, writeLog } from "fast-node-logger";
 import path from "path";
 import { NodeMode } from "../typings/node/mode";
-import keytar from "keytar";
 import { AxiosResponse } from "axios";
-
-type Credential = {
-  account: string;
-  password: string;
-};
-
-/** get credential object from operating system  */
-export async function getCredential(targetName: string): Promise<Credential> {
-  writeLog([`getCredential`, targetName], { level: "trace" });
-
-  const [myCred] = await keytar.findCredentials(targetName);
-  return {
-    ...myCred,
-    // eslint-disable-next-line no-control-regex
-    password: myCred.password.replace(/[\x00-\x08\x0E-\x1F\x7F-\uFFFF]/g, ""),
-  };
-}
 
 /**@description logger instance to store logs in files located in ./logs directory */
 export async function createLoggerInstance(
@@ -88,7 +70,7 @@ export function getNexLink(headers: AxiosResponse["headers"]) {
   writeLog([`getNexLink`, headers], { level: "trace" });
 
   if (headers.link) {
-    const start = 1 + headers.link.search("<");
+    const start = 1 + Number(headers.link.search("<"));
     const end = headers.link.search(">");
     const linkStr = headers.link.substring(start, end);
     return linkStr;
