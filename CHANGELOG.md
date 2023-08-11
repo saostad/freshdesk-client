@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.8.1](https://github.com/saostad/freshdesk-client/compare/v1.8.0...v1.8.1)
+
+> 11 August 2023
+
+- fix: export getRequesterById [`a138d24`](https://github.com/saostad/freshdesk-client/commit/a138d244cb67e54c8ce085cd6f14f02563a663f6)
+- doc: change-log updated. [`b6825c1`](https://github.com/saostad/freshdesk-client/commit/b6825c13786ce0fede046e33367bd47ea4648ac9)
+
 #### [v1.8.0](https://github.com/saostad/freshdesk-client/compare/v1.7.4...v1.8.0)
 
 > 11 August 2023
