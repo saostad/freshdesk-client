@@ -1,7 +1,6 @@
-import z from "zod";
 import {
   ServiceCategory,
-  ServiceCategories as schema,
+  ServiceCategoriesSchema,
 } from "../typings/service-category";
 import { getData } from "../helpers/getData";
 import { validateOrFail } from "../helpers/util";
@@ -27,18 +26,21 @@ export const getServiceCategories = async ({
   token,
   doValidate,
 }: BaseGetInput) => {
-  const response = await getData<z.infer<typeof ServiceCategory>>({
+  const response = await getData<ServiceCategory[]>({
     uri: `${baseUri}/api/v2/service_catalog/categories`,
     token,
   });
 
-  const serviceCategories: z.infer<typeof ServiceCategory>[] = [];
+  const serviceCategories: ServiceCategory[] = [];
   response.forEach((el) => {
     serviceCategories.push(...el["service_categories"]);
   });
 
   if (doValidate) {
-    validateOrFail({ schema, data: serviceCategories });
+    validateOrFail({
+      schema: ServiceCategoriesSchema,
+      data: serviceCategories,
+    });
   }
 
   return serviceCategories;

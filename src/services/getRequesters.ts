@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Requester, Requesters } from "../typings/requester";
+import { Requester, RequestersSchema } from "../typings/requester";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -14,15 +13,15 @@ export async function getRequesters({
 
   const uri = `${baseUri}/api/v2/requesters`;
 
-  const data = await getData<z.infer<typeof Requester>>({ uri, token });
+  const data = await getData<Requester[]>({ uri, token });
 
-  const requesters: z.infer<typeof Requester>[] = [];
+  const requesters: Requester[] = [];
   data.forEach((el) => {
     requesters.push(...el["requesters"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: requesters, schema: Requesters });
+    validateOrFail({ data: requesters, schema: RequestersSchema });
   }
 
   writeLog(`${requesters.length} requesters downloaded.`, {

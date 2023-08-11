@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const ServiceCategory = z.object({
+export const ServiceCategorySchema = z.object({
   /** Unique id of the category */
   id: z.number(),
   /** ID of the workspace to which the service category belongs. The attribute is applicable only for accounts with the 'Workspaces' feature enabled. */
@@ -17,4 +17,6 @@ export const ServiceCategory = z.object({
   position: z.number(),
 });
 
-export const ServiceCategories = z.array(ServiceCategory);
+export type ServiceCategory = z.infer<typeof ServiceCategorySchema>;
+
+export const ServiceCategoriesSchema = z.array(ServiceCategorySchema);

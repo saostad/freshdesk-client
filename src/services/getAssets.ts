@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Asset, Assets } from "../typings/asset";
+import { Asset, AssetsSchema } from "../typings/asset";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -195,20 +194,20 @@ export async function getAssets({
     params["filter"] = filterQuery;
   }
 
-  const data = await getData<z.infer<typeof Asset>>({
+  const data = await getData<Asset[]>({
     uri,
     token,
     // if params is empty object, it will be ignored
     params: Object.keys(params).length > 0 ? params : undefined,
   });
 
-  const assets: z.infer<typeof Assets> = [];
+  const assets: Asset[] = [];
   data.forEach((el) => {
     assets.push(...el["assets"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: assets, schema: Assets });
+    validateOrFail({ data: assets, schema: AssetsSchema });
   }
 
   writeLog(`${assets.length} assets downloaded.`, {

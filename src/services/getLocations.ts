@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Locations, Location } from "../typings/location";
+import { LocationsSchema, Location } from "../typings/location";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -14,15 +13,15 @@ export async function getLocations({
 
   const uri = `${baseUri}/api/v2/locations`;
 
-  const data = await getData<z.infer<typeof Location>>({ uri, token });
+  const data = await getData<Location[]>({ uri, token });
 
-  const locations: z.infer<typeof Location>[] = [];
+  const locations: Location[] = [];
   data.forEach((el) => {
     locations.push(...el["locations"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: locations, schema: Locations });
+    validateOrFail({ data: locations, schema: LocationsSchema });
   }
 
   writeLog(`${locations.length} locations downloaded.`, {

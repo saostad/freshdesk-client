@@ -22,7 +22,7 @@ export async function getData<ReturnData>({
   include,
   params,
   getTicketsConfigs,
-}: GetData): Promise<Array<Record<string, ReturnData[]>>> {
+}: GetData): Promise<Array<Record<string, ReturnData>>> {
   try {
     writeLog([`getData`, uri], { level: "trace" });
 

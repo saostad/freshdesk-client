@@ -1,5 +1,5 @@
 import { validateOrFail } from "../helpers/util";
-import { Asset } from "../typings/asset";
+import { Asset, AssetSchema } from "../typings/asset";
 import { BaseGetInput } from "../typings/general";
 import { getData } from "../helpers/getData";
 
@@ -31,18 +31,18 @@ export async function getAssetById({
   token,
   doValidate,
   include,
-}: GetAssetByIdInput) {
+}: GetAssetByIdInput): Promise<Asset> {
   const uri = `${baseUri}/api/v2/assets/${assetId}`;
 
   // it returns array of assets but we need the first one, then it comes in an object with key "asset" so we need to destructure it
-  const [{ asset: assetData }] = await getData({
+  const [{ asset: assetData }] = await getData<Asset>({
     uri,
     token,
     include: include ? "type_fields" : undefined,
   });
 
   if (doValidate) {
-    validateOrFail({ data: assetData, schema: Asset });
+    validateOrFail({ data: assetData, schema: AssetSchema });
   }
 
   return assetData;

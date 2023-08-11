@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Agent = z.object({
+export const AgentSchema = z.object({
   /** number	User ID of the agent. */
   id: z.number(),
   /** string	First name of the agent. MANDATORY */
@@ -64,4 +64,6 @@ groups: Unique IDs of Groups in which the permissions granted by the role applie
   active: z.boolean().nullable(),
 });
 
-export const Agents = z.array(Agent);
+export type Agent = z.infer<typeof AgentSchema>;
+
+export const AgentsSchema = z.array(AgentSchema);

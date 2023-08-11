@@ -1,7 +1,7 @@
 import z from "zod";
 
 // z schema with descriptions for each field from the Freshservice API docs as jsdoc comments
-export const ServiceItem = z.object({
+export const ServiceItemSchema = z.object({
   /** Unique id of the item */
   id: z.number().optional(),
   /** The time at which the item was created */
@@ -59,9 +59,8 @@ export const ServiceItem = z.object({
   child_items: z.string().optional(),
 });
 
-export const ServiceItems = z.array(ServiceItem);
+export type ServiceItem = z.infer<typeof ServiceItemSchema>;
 
-// z schema with all fields optional
-export const ServiceItemOptional = ServiceItem.partial();
+export const ServiceItemsSchema = z.array(ServiceItemSchema);
 
-export const ServiceItemsOptional = z.array(ServiceItemOptional);
+export const ServiceItemsOptionalSchema = z.array(ServiceItemSchema.partial());

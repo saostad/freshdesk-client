@@ -29,7 +29,7 @@ const type_fields = z.object({
   health_16000738807: z.enum(["Operational", "Needs Attention"]),
 });
 
-export const Asset = z.object({
+export const AssetSchema = z.object({
   /** number	Unique ID of the asset. */
   id: z.number().optional(),
   /** 	numbers	Display ID of the asset. */
@@ -68,4 +68,6 @@ export const Asset = z.object({
   type_fields: type_fields.partial().optional(),
 });
 
-export const Assets = z.array(Asset);
+export type Asset = z.infer<typeof AssetSchema>;
+
+export const AssetsSchema = z.array(AssetSchema);

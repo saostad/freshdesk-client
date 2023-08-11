@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Department, Departments } from "../typings/departments";
+import { Department, DepartmentsSchema } from "../typings/departments";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -14,15 +13,15 @@ export async function getDepartments({
 
   const uri = `${baseUri}/api/v2/departments`;
 
-  const data = await getData<z.infer<typeof Department>>({ uri, token });
+  const data = await getData<Department[]>({ uri, token });
 
-  const departments: z.infer<typeof Department>[] = [];
+  const departments: Department[] = [];
   data.forEach((el) => {
     departments.push(...el["departments"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: departments, schema: Departments });
+    validateOrFail({ data: departments, schema: DepartmentsSchema });
   }
 
   writeLog(`${departments.length} departments downloaded.`, {

@@ -1,11 +1,10 @@
-import { z } from "zod";
 import { BaseUpdateInput } from "../typings/general";
 import { Asset } from "../typings/asset";
 import { putData } from "../helpers/putData";
 import { writeLog } from "fast-node-logger";
 
 type UpdateAsset = BaseUpdateInput & {
-  asset: Partial<z.infer<typeof Asset>>;
+  asset: Partial<Asset>;
   displayId: number;
 };
 
@@ -54,10 +53,7 @@ export async function updateAsset({
 }: UpdateAsset) {
   const uri = `${baseUri}/api/v2/assets/${displayId}`;
 
-  const data = await putData<
-    Partial<z.infer<typeof Asset>>,
-    { asset: z.infer<typeof Asset> }
-  >({
+  const data = await putData<Partial<Asset>, { asset: Asset }>({
     data: asset,
     uri,
     token,

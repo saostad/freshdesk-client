@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Product, Products } from "../typings/product";
+import { Product, ProductsSchema } from "../typings/product";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -14,18 +13,18 @@ export async function getProducts({
 
   const uri = `${baseUri}/api/v2/products`;
 
-  const data = await getData<z.infer<typeof Product>>({
+  const data = await getData<Product[]>({
     uri,
     token,
   });
 
-  const products: z.infer<typeof Product>[] = [];
+  const products: Product[] = [];
   data.forEach((el) => {
     products.push(...el["products"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: products, schema: Products });
+    validateOrFail({ data: products, schema: ProductsSchema });
   }
 
   writeLog(`${products.length} products downloaded.`, {

@@ -1,5 +1,5 @@
 import { writeLog } from "fast-node-logger";
-import { Ticket, NewTicketInput } from "../typings/ticket";
+import { TicketSchema, NewTicketInputSchema } from "../typings/ticket";
 import { z } from "zod";
 import { postData } from "../helpers/postData";
 import { BaseCreateInput } from "../typings/general";
@@ -59,7 +59,7 @@ export enum TicketPriority {
 }
 
 type CreateTicket = BaseCreateInput & {
-  ticket: z.infer<typeof NewTicketInput>;
+  ticket: z.infer<typeof NewTicketInputSchema>;
 };
 
 /** Create a Ticket
@@ -72,8 +72,8 @@ export async function createTicket({ baseUri, token, ticket }: CreateTicket) {
   const uri = `${baseUri}/api/v2/tickets`;
 
   const data = await postData<
-    z.infer<typeof NewTicketInput>,
-    { ticket: z.infer<typeof Ticket> }
+    z.infer<typeof NewTicketInputSchema>,
+    { ticket: z.infer<typeof TicketSchema> }
   >({
     uri,
     token,

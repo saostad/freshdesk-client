@@ -1,7 +1,6 @@
 import { writeLog } from "fast-node-logger";
-import { z } from "zod";
 import { validateOrFail } from "../helpers/util";
-import { Ticket, Tickets } from "../typings/ticket";
+import { Ticket, TicketsSchema } from "../typings/ticket";
 import { getData } from "../helpers/getData";
 import { BaseGetInput } from "../typings/general";
 
@@ -28,20 +27,20 @@ export async function getTickets({
     uri = `${baseUri}/api/v2/tickets/filter`;
   }
 
-  const data = await getData<z.infer<typeof Ticket>>({
+  const data = await getData<Ticket[]>({
     uri,
     token,
     getTicketsConfigs: { filter },
   });
 
-  const tickets: z.infer<typeof Ticket>[] = [];
+  const tickets: Ticket[] = [];
 
   data.forEach((el) => {
     tickets.push(...el["tickets"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: tickets, schema: Tickets });
+    validateOrFail({ data: tickets, schema: TicketsSchema });
   }
 
   writeLog(`${tickets.length} tickets downloaded.`, {

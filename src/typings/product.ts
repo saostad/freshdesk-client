@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Product = z.object({
+export const ProductSchema = z.object({
   /**number	Unique ID of the product. */
   id: z.number(),
   /**	string	Name of the Product.MANDATORY */
@@ -25,4 +25,6 @@ export const Product = z.object({
   updated_at: z.string().nullable(),
 });
 
-export const Products = z.array(Product);
+export type Product = z.infer<typeof ProductSchema>;
+
+export const ProductsSchema = z.array(ProductSchema);

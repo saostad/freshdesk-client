@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Department = z.object({
+export const DepartmentSchema = z.object({
   description: z.string().nullable(),
   custom_fields: z.any(),
   id: z.number(),
@@ -12,4 +12,6 @@ export const Department = z.object({
   domains: z.array(z.any()),
 });
 
-export const Departments = z.array(Department);
+export type Department = z.infer<typeof DepartmentSchema>;
+
+export const DepartmentsSchema = z.array(DepartmentSchema);

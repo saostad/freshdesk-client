@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Ticket = z.object({
+export const TicketSchema = z.object({
   subject: z.string(),
   group_id: z.number().nullable(),
   department_id: z.number().nullable(),
@@ -28,9 +28,11 @@ export const Ticket = z.object({
   description_text: z.string(),
 });
 
-export const Tickets = z.array(Ticket);
+export type Ticket = z.infer<typeof TicketSchema>;
 
-export const NewTicketInput = z.object({
+export const TicketsSchema = z.array(TicketSchema);
+
+export const NewTicketInputSchema = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
   phone: z.string().optional(),

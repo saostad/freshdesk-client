@@ -1,11 +1,11 @@
 import { writeLog } from "fast-node-logger";
 import { postData } from "../helpers/postData";
 import { z } from "zod";
-import { ServiceItem } from "../typings/service-item";
+import { ServiceItemSchema } from "../typings/service-item";
 import { BaseCreateInput } from "../typings/general";
 
 type CreateServiceItem = BaseCreateInput & {
-  serviceItem: z.infer<typeof ServiceItem>;
+  serviceItem: z.infer<typeof ServiceItemSchema>;
 };
 
 /**
@@ -22,8 +22,8 @@ export async function createServiceItem({
   const uri = `${baseUri}/api/v2/service-catalog/items`;
 
   const data = await postData<
-    z.infer<typeof ServiceItem>,
-    { service_item: z.infer<typeof ServiceItem> }
+    z.infer<typeof ServiceItemSchema>,
+    { service_item: z.infer<typeof ServiceItemSchema> }
   >({
     uri,
     token,

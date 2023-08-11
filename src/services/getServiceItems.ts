@@ -1,8 +1,7 @@
-import { z } from "zod";
 import { BaseGetInput } from "../typings/general";
 import {
-  ServiceItemOptional,
-  ServiceItemsOptional,
+  ServiceItem,
+  ServiceItemsOptionalSchema,
 } from "../typings/service-item";
 import { getData } from "../helpers/getData";
 import { validateOrFail } from "../helpers/util";
@@ -47,7 +46,7 @@ export const getServiceItems = async ({
 }: GetServiceCategories) => {
   const url = `${baseUri}/api/v2/service_catalog/items`;
 
-  const response = await getData<z.infer<typeof ServiceItemOptional>>({
+  const response = await getData<Partial<ServiceItem>[]>({
     token,
     uri: url,
     params: {
@@ -56,14 +55,14 @@ export const getServiceItems = async ({
     },
   });
 
-  const serviceItems: z.infer<typeof ServiceItemsOptional> = [];
+  const serviceItems: Partial<ServiceItem>[] = [];
 
   response.forEach((el) => {
     serviceItems.push(...el["service_items"]);
   });
 
   if (doValidate) {
-    validateOrFail({ data: serviceItems, schema: ServiceItemsOptional });
+    validateOrFail({ data: serviceItems, schema: ServiceItemsOptionalSchema });
   }
 
   writeLog(`${serviceItems.length} service items downloaded.`, {

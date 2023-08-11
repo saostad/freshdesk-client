@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Requester = z.object({
+export const RequesterSchema = z.object({
   active: z.boolean(),
   address: z.string().nullable(),
   background_information: z.string().nullable(),
@@ -28,4 +28,6 @@ export const Requester = z.object({
   work_phone_number: z.string().nullable(),
 });
 
-export const Requesters = z.array(Requester);
+export type Requester = z.infer<typeof RequesterSchema>;
+
+export const RequestersSchema = z.array(RequesterSchema);

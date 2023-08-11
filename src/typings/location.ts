@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Location = z.object({
+export const LocationSchema = z.object({
   /**number	Unique ID of the location. */
   id: z.number(),
   /**	string	Name of the Location.MANDATORY */
@@ -24,4 +24,6 @@ export const Location = z.object({
   updated_at: z.string().nullable(),
 });
 
-export const Locations = z.array(Location);
+export type Location = z.infer<typeof LocationSchema>;
+
+export const LocationsSchema = z.array(LocationSchema);

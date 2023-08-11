@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const AssetType = z.object({
+export const AssetTypeSchema = z.object({
   /**number	Unique ID of the asset type. */
   id: z.number(),
   /**	string	Name of the asset type.MANDATORY */
@@ -17,4 +17,6 @@ export const AssetType = z.object({
   updated_at: z.string(),
 });
 
-export const AssetTypes = z.array(AssetType);
+export type AssetType = z.infer<typeof AssetTypeSchema>;
+
+export const AssetTypesSchema = z.array(AssetTypeSchema);
