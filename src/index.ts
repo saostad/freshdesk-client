@@ -19,3 +19,4 @@ export { getAssetById } from "./services/getAssetById";
 export { updateAsset } from "./services/updateAsset";
 export { deleteAsset } from "./services/deleteAsset";
 export { createServiceItem } from "./services/createServiceItem";
+export { getRequesterById } from "./services/getRequesterById";

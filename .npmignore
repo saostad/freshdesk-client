@@ -8,3 +8,4 @@ generated
 ./compile/**/*.*
 /obfuscated/**/*.*
 /release/**/*.*
+internal-tests.*
