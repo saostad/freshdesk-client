@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.9.0](https://github.com/saostad/freshdesk-client/compare/v1.8.1...v1.9.0)
+
+> 11 August 2023
+
+- feat: search parameter for getAssets [`74d85a6`](https://github.com/saostad/freshdesk-client/commit/74d85a6462e05fcebeafd9406448a82d1a0b4a9a)
+- doc: change-log updated. [`dd83f6a`](https://github.com/saostad/freshdesk-client/commit/dd83f6abf94258b24cf650b2e1ae3a0067d338a7)
+
 #### [v1.8.1](https://github.com/saostad/freshdesk-client/compare/v1.8.0...v1.8.1)
 
 > 11 August 2023
