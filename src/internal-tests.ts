@@ -56,51 +56,56 @@ const servicesAssetTypeId = process.env.SANDBOX_SERVICES_ASSET_TYPE_ID!;
 
 // const newAssetId = 28;
 
-getAssetById({
-  baseUri,
-  token,
-  assetId: 1965,
-  doValidate: true,
-  include: true,
-}).then((res) => {
-  console.log(`File: index.ts,`, `Line: 36 => `, res);
-});
+// getAssetById({
+//   baseUri,
+//   token,
+//   assetId: 1965,
+//   doValidate: true,
+//   include: true,
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 36 => `, res);
+// });
 
-getRequesterById({
-  baseUri,
-  token,
-  requesterId: 16002051992,
-  doValidate: true,
-}).then((res) => {
-  console.log(`File: index.ts,`, `Line: 75 => `, res);
-});
+// getRequesterById({
+//   baseUri,
+//   token,
+//   requesterId: 16002051992,
+//   doValidate: true,
+// }).then((res) => {
+//   console.log(`File: index.ts,`, `Line: 75 => `, res);
+// });
 
 // getRequesters({
 //   baseUri,
 //   token,
 //   doValidate: true,
+//   perPage: 100,
 // }).then((res) => {
 //   console.log(`File: index.ts,`, `Line: 74 => `, res);
 // });
 
-// getAssets({
-//   baseUri,
-//   token,
-//   doValidate: true,
-//   include: ["type_fields"],
-//   sort: {
-//     orderBy: "created_at",
-//     orderType: "asc",
-//   },
-//   // filters: [
-//   //   {
-//   //     filterKey: "asset_type_id",
-//   //     filterValue: Number(servicesAssetTypeId),
-//   //   },
-//   // ],
-// }).then((res) => {
-//   console.log(`File: index.ts,`, `Line: 36 => `, res[0]);
-// });
+getAssets({
+  baseUri,
+  token,
+  doValidate: true,
+  include: ["type_fields"],
+  // sort: {
+  //   orderBy: "created_at",
+  //   orderType: "asc",
+  // },
+  search: {
+    searchKey: "serial_number",
+    searchValue: "PF4FCVBY",
+  },
+  // filters: [
+  //   {
+  //     filterKey: "asset_type_id",
+  //     filterValue: 16000738831,
+  //   },
+  // ],
+}).then((res) => {
+  console.log(`File: index.ts,`, `Line: 36 => `, res.length);
+});
 
 // getAssetTypes({
 //   baseUri,

@@ -21,46 +21,8 @@ type FilterObject = {
   operator?: "AND" | "OR";
 };
 
-type GetAssetsInput = BaseGetInput & {
+type GetAssetsInput = Omit<BaseGetInput, "perPage"> & {
   include?: ["type_fields" | "trashed"];
-  sort?: {
-    orderBy?: "id" | "created_at" | "updated_at";
-    orderType?: "asc" | "desc";
-  };
-
-  /**
-     * Search Assets
-    Use asset attributes to search from your list.
-    @ref https://api.freshservice.com/v2/#search_assets
-    @note
-    1. Search results cannot be sorted. By default it is sorted by created_at in descending order.
-    2. The search query must be URL encoded (see example).
-    3. Query can be framed using the asset fields, which can be obtained from Supported Asset Fields section.
-    4. Search query string must be enclosed between a pair of double quotes.
-    5. If the search query string contains apostrophe, it must be escaped (see example).
-    6. The number of objects returned per page is 30. The total count of the results will be returned along with the result (In the headers).
-    7. Please note that any updates made to assets either in Freshservice application or through APIs may take a few minutes to get indexed, after which the updated results will be available through API.
-    @note Supported Asset Fields
-    Field	        | Type    |	Description
-    --------------|---------|-------------
-    name          |	string  | Display name of the asset.
-    asset_tag	    | string	| Tag that is assigned to the asset.
-    serial_number |	string  |	Serial number.
-    @api GET  /api/v2/assets?search=[query]
-    @example
-    1. curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27dell%27"'
-    2. Search assets in trash which has name dell.
-
-    search=" name:'dell' "
-
-    curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27dell%27"&trashed=true'
-    3. Search string must be escaped if it contains apostrophe.
-
-    search=" name:'andrea\'s laptop' "
-
-    curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27andrea%5C%27s%20laptop%27"'
-    */
-  search?: string;
   /**
    * Filter Assets
     Use asset attributes to filter your list.
@@ -113,7 +75,55 @@ type GetAssetsInput = BaseGetInput & {
    */
   // array of filter items objects
   filters?: Array<FilterObject>;
-};
+} & (
+    | {
+        sort?: {
+          orderBy?: "id" | "created_at" | "updated_at";
+          orderType?: "asc" | "desc";
+        };
+        search?: never;
+      }
+    | {
+        sort?: never;
+
+        /**
+     * Search Assets
+    Use asset attributes to search from your list.
+    @ref https://api.freshservice.com/v2/#search_assets
+    @note
+    1. Search results cannot be sorted. By default it is sorted by created_at in descending order.
+    2. The search query must be URL encoded (see example).
+    3. Query can be framed using the asset fields, which can be obtained from Supported Asset Fields section.
+    4. Search query string must be enclosed between a pair of double quotes.
+    5. If the search query string contains apostrophe, it must be escaped (see example).
+    6. The number of objects returned per page is 30. The total count of the results will be returned along with the result (In the headers).
+    7. Please note that any updates made to assets either in Freshservice application or through APIs may take a few minutes to get indexed, after which the updated results will be available through API.
+    @note Supported Asset Fields
+    Field	        | Type    |	Description
+    --------------|---------|-------------
+    name          |	string  | Display name of the asset.
+    asset_tag	    | string	| Tag that is assigned to the asset.
+    serial_number |	string  |	Serial number.
+    @api GET  /api/v2/assets?search=[query]
+    @example
+    1. curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27dell%27"'
+    2. Search assets in trash which has name dell.
+
+    search=" name:'dell' "
+
+    curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27dell%27"&trashed=true'
+    3. Search string must be escaped if it contains apostrophe.
+
+    search=" name:'andrea\'s laptop' "
+
+    curl -v -u api_key:X -X GET 'https://domain.freshservice.com/api/v2/assets?search="name%3A%27andrea%5C%27s%20laptop%27"'
+    */
+        search?: {
+          searchKey: "name" | "asset_tag" | "serial_number";
+          searchValue: string;
+        };
+      }
+  );
 
 /** 
  * @info get assets 
@@ -131,7 +141,6 @@ type GetAssetsInput = BaseGetInput & {
   trashed	/api/v2/assets?trashed=true
   Will return all the assets that are in trash.
  */
-
 export async function getAssets({
   baseUri,
   token,
@@ -166,7 +175,8 @@ export async function getAssets({
   }
 
   if (search) {
-    params["search"] = search;
+    const searchQuery = `"${search.searchKey}:'${search.searchValue}'"`;
+    params["search"] = searchQuery;
   }
 
   if (filters && filters.length > 0) {

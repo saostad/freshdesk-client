@@ -8,12 +8,13 @@ export async function getRequesters({
   baseUri,
   token,
   doValidate,
+  perPage,
 }: BaseGetInput) {
   writeLog(`getRequesters()`, { level: "debug" });
 
   const uri = `${baseUri}/api/v2/requesters`;
 
-  const data = await getData<Requester[]>({ uri, token });
+  const data = await getData<Requester[]>({ uri, token, perPage });
 
   const requesters: Requester[] = [];
   data.forEach((el) => {

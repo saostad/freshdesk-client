@@ -22,6 +22,7 @@ export async function getData<ReturnData>({
   include,
   params,
   getTicketsConfigs,
+  perPage,
 }: GetData): Promise<Array<Record<string, ReturnData>>> {
   try {
     writeLog([`getData`, uri], { level: "trace" });
@@ -64,6 +65,10 @@ export async function getData<ReturnData>({
       const nextLinkStr = getNexLink(apiResponse.headers);
       if (nextLinkStr) {
         config.url = nextLinkStr;
+
+        if (perPage && typeof perPage === "number") {
+          config.params["per_page"] = perPage;
+        }
 
         apiResponse = await axios<ReturnData>(config).catch((err) => {
           writeLog(`error getting data from api.`, {

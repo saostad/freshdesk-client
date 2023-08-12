@@ -10,6 +10,11 @@ export type InternalBaseGetInput = {
   include?: string;
   /** query parameters */
   params?: Record<string, string>;
+  /** number of items per page
+   * @ref https://api.freshservice.com/v2/#pagination
+   * @default 30
+   */
+  perPage?: number;
 };
 
 export type BaseGetInput = {
@@ -21,6 +26,11 @@ export type BaseGetInput = {
   token: string;
   /** set to true to validate api response against the zod schema */
   doValidate?: boolean;
+  /** number of items per page
+   * @ref https://api.freshservice.com/v2/#pagination
+   * @default 30
+   */
+  perPage?: number;
 };
 
 export type InternalBasePostInput<InputData extends Record<string, any>> = {
