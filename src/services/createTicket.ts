@@ -80,10 +80,10 @@ export async function createTicket({ baseUri, token, ticket }: CreateTicket) {
     data: ticket,
   });
 
-  writeLog(`ticket created with id: ${data.ticket.id}`, {
+  writeLog(`ticket created with id: ${data.id}`, {
     stdout: true,
     level: "info",
   });
 
-  return data.ticket;
+  return data;
 }
