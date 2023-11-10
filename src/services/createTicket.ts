@@ -73,7 +73,7 @@ export async function createTicket({ baseUri, token, ticket }: CreateTicket) {
 
   const data = await postData<
     z.infer<typeof NewTicketInputSchema>,
-    { ticket: z.infer<typeof TicketSchema> }
+    z.infer<typeof TicketSchema>
   >({
     uri,
     token,
