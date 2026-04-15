@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
+import { axiosWithRetry } from "../helpers/util";
 import { InternalBaseDeleteInput } from "../typings/general";
 
 export async function deleteData({
@@ -15,7 +16,7 @@ export async function deleteData({
     auth: { username: token, password: "x" },
   };
 
-  const apiResponse = await axios(config);
+  const apiResponse = await axiosWithRetry(config);
 
   return apiResponse.data;
 }

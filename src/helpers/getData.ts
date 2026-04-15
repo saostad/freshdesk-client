@@ -1,6 +1,10 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { writeLog } from "fast-node-logger";
-import { isMoreDataAvailable, getNexLink } from "../helpers/util";
+import {
+  isMoreDataAvailable,
+  getNexLink,
+  axiosWithRetry,
+} from "../helpers/util";
 import { InternalBaseGetInput } from "../typings/general";
 
 type GetData = InternalBaseGetInput & {
@@ -57,7 +61,7 @@ export async function getData<ReturnData>({
 
     const data = [];
 
-    let apiResponse = await axios(config);
+    let apiResponse = await axiosWithRetry(config);
 
     data.push(apiResponse.data);
 
@@ -70,7 +74,7 @@ export async function getData<ReturnData>({
           config.params["per_page"] = perPage;
         }
 
-        apiResponse = await axios<ReturnData>(config).catch((err) => {
+        apiResponse = await axiosWithRetry<ReturnData>(config).catch((err) => {
           writeLog(`error getting data from api.`, {
             stdout: true,
             level: "error",

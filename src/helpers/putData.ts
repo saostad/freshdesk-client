@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
+import { axiosWithRetry } from "../helpers/util";
 import { InternalBasePutInput } from "../typings/general";
 
 /**
@@ -20,7 +21,7 @@ export async function putData<InputData = any, ReturnData = any>({
     data,
   };
 
-  const apiResponse = await axios<ReturnData>(config);
+  const apiResponse = await axiosWithRetry<ReturnData>(config);
 
   return apiResponse.data;
 }

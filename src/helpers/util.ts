@@ -1,7 +1,7 @@
 import { createLogger, Logger, writeLog } from "fast-node-logger";
 import path from "path";
 import { NodeMode } from "../typings/node/mode";
-import { AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**@description logger instance to store logs in files located in ./logs directory */
 export async function createLoggerInstance(
@@ -88,4 +88,36 @@ export function stringifyANumber(
   } else {
     return String(input);
   }
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function axiosWithRetry<T = any>(
+  config: AxiosRequestConfig,
+  maxRetries = 5,
+): Promise<AxiosResponse<T>> {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await axios<T>(config);
+    } catch (err: any) {
+      if (err.response?.status === 429 && attempt < maxRetries) {
+        const retryAfter = parseInt(
+          err.response.headers?.["retry-after"] ?? "60",
+          10,
+        );
+        const waitSec = retryAfter + 5;
+        writeLog(
+          `Rate limited (429). Waiting ${waitSec}s before retry ${attempt + 1}/${maxRetries}...`,
+          { stdout: true, level: "warn" },
+        );
+        await sleep(waitSec * 1000);
+      } else {
+        throw err;
+      }
+    }
+  }
+  // Should never reach here, but satisfies TypeScript
+  throw new Error("axiosWithRetry: exceeded max retries");
 }
