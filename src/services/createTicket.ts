@@ -73,17 +73,17 @@ export async function createTicket({ baseUri, token, ticket }: CreateTicket) {
 
   const data = await postData<
     z.infer<typeof NewTicketInputSchema>,
-    { ticket: z.infer<typeof TicketSchema> }
+    z.infer<typeof TicketSchema>
   >({
     uri,
     token,
     data: ticket,
   });
 
-  writeLog(`ticket created with id: ${data.ticket.id}`, {
+  writeLog(`ticket created with id: ${data.id}`, {
     stdout: true,
     level: "info",
   });
 
-  return data.ticket;
+  return data;
 }
